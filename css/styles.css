@@ -524,7 +524,7 @@ ul { list-style: none; }
 
 .people-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 
@@ -535,7 +535,7 @@ ul { list-style: none; }
   transition: border-color var(--transition);
 }
 
-.person-card:hover { border-color: var(--gray-400); }
+.person-card:hover { border-color: var(--color-border); }
 
 .person-header {
   display: flex;
@@ -1117,6 +1117,7 @@ ul { list-style: none; }
 /* ---- Responsive ---- */
 
 @media (max-width: 1024px) {
+  .people-grid { grid-template-columns: repeat(3, 1fr); }
   .highlights { grid-template-columns: 1fr 1fr; }
   .capabilities-grid { grid-template-columns: 1fr 1fr; }
   .lab-stats { grid-template-columns: repeat(2, 1fr); }
@@ -1159,7 +1160,7 @@ ul { list-style: none; }
   .section { padding: 56px 0; }
 
   .highlights { grid-template-columns: 1fr; }
-  .people-grid { grid-template-columns: 1fr; }
+  .people-grid { grid-template-columns: repeat(2, 1fr); }
   .former-grid { grid-template-columns: 1fr; }
   .capabilities-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }

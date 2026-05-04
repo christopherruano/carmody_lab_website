@@ -10,7 +10,6 @@
 
     var links = [
       { href: 'index.html', text: 'Home' },
-      { href: 'about.html', text: 'About' },
       { href: 'research.html', text: 'Research' },
       { href: 'people.html', text: 'People' },
       { href: 'publications.html', text: 'Publications' },
