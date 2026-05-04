@@ -204,6 +204,46 @@ ul { list-style: none; }
   display: block;
 }
 
+.slide-caption {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 40%;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 64px 0 36px;
+  z-index: 2;
+  color: white;
+}
+
+.slide-label {
+  font-size: clamp(14px, 1.4vw, 18px);
+  font-weight: 400;
+  line-height: 1.4;
+  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.slide-finding {
+  font-family: var(--font-serif);
+  font-size: clamp(16px, 1.8vw, 24px);
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 14px;
+  transition: opacity 0.4s ease;
+}
+
+.slide-citation {
+  font-size: clamp(11px, 1vw, 13px);
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+  font-style: italic;
+  transition: opacity 0.4s ease;
+}
+
 .hero-arrow {
   position: absolute;
   top: 50%;
@@ -234,7 +274,7 @@ ul { list-style: none; }
 .hero-dots {
   position: absolute;
   bottom: 14px;
-  left: 50%;
+  left: 30%;
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
@@ -1110,6 +1150,12 @@ ul { list-style: none; }
 
   .hero-sidecar { grid-template-columns: 1fr; }
   .hero-text { padding: 48px 24px 40px; }
+  .slide-caption {
+    position: relative;
+    width: 100%;
+    padding: 24px;
+  }
+  .hero-dots { left: 50%; }
   .section { padding: 56px 0; }
 
   .highlights { grid-template-columns: 1fr; }

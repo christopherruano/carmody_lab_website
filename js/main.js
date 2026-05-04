@@ -111,11 +111,31 @@
     var dots = document.querySelectorAll('.hero-dot');
     var prevBtn = document.querySelector('.hero-arrow-prev');
     var nextBtn = document.querySelector('.hero-arrow-next');
+    var findingEl = document.getElementById('slide-finding');
+    var citationEl = document.getElementById('slide-citation');
     if (slides.length === 0) return;
+
+    var slideData = [
+      { finding: 'Diet dominates host genotype in shaping the gut microbiota', citation: 'Carmody et al. 2015 Cell Host & Microbe', color: '#7ecde6' },
+      { finding: 'Gut microbes help metabolize drugs and diet-derived xenobiotics', citation: 'Carmody & Turnbaugh 2014 J Clin Invest', color: '#e89090' },
+      { finding: 'Cooking and non-thermal food processing increase calories gained from food', citation: 'Carmody et al. 2011 PNAS; Groopman et al. 2015 Am J Phys Anthropol', color: '#aed581' },
+      { finding: 'Cooking shapes the structure and function of the gut microbiome, affecting energy balance', citation: 'Carmody et al. 2019 Nat Microbiol', color: '#ffd54f' },
+      { finding: 'The gut microbiota matures differently in humans and wild chimpanzees', citation: 'Reese et al. 2021 Current Biology', color: '#d7ccc8' },
+      { finding: 'Effects of domestication on the gut microbiota parallel those of human industrialization', citation: 'Reese et al. 2021 eLife', color: '#b39ddb' }
+    ];
 
     var current = 0;
     var interval;
     var paused = false;
+
+    function updateCaption(index) {
+      if (!findingEl || !citationEl) return;
+      findingEl.textContent = slideData[index].finding;
+      findingEl.style.color = slideData[index].color;
+      citationEl.textContent = slideData[index].citation;
+    }
+
+    updateCaption(0);
 
     function goTo(index) {
       slides[current].classList.remove('active');
@@ -123,6 +143,7 @@
       current = index;
       slides[current].classList.add('active');
       if (dots[current]) dots[current].classList.add('active');
+      updateCaption(current);
     }
 
     function next() {
@@ -133,40 +154,33 @@
       goTo((current - 1 + slides.length) % slides.length);
     }
 
-    function startAutoplay() {
+    function stopAutoplay() {
+      paused = true;
       clearInterval(interval);
-      if (!paused) {
-        interval = setInterval(next, 5000);
-      }
     }
+
+    interval = setInterval(next, 10000);
 
     dots.forEach(function (dot, i) {
       dot.addEventListener('click', function () {
-        paused = true;
-        clearInterval(interval);
+        stopAutoplay();
         goTo(i);
       });
     });
 
     if (prevBtn) {
       prevBtn.addEventListener('click', function () {
-        paused = false;
-        clearInterval(interval);
+        stopAutoplay();
         prev();
-        startAutoplay();
       });
     }
 
     if (nextBtn) {
       nextBtn.addEventListener('click', function () {
-        paused = false;
-        clearInterval(interval);
+        stopAutoplay();
         next();
-        startAutoplay();
       });
     }
-
-    startAutoplay();
   }
 
   function initResearchTabs() {
