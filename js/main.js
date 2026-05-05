@@ -120,7 +120,11 @@
       { finding: 'Cooking and non-thermal food processing increase calories gained from food', citation: 'Carmody et al. 2011 PNAS; Groopman et al. 2015 Am J Phys Anthropol', color: '#aed581' },
       { finding: 'Cooking shapes the structure and function of the gut microbiome, affecting energy balance', citation: 'Carmody et al. 2019 Nat Microbiol', color: '#ffd54f' },
       { finding: 'The gut microbiota matures differently in humans and wild chimpanzees', citation: 'Reese et al. 2021 Current Biology', color: '#d7ccc8' },
-      { finding: 'Effects of domestication on the gut microbiota parallel those of human industrialization', citation: 'Reese et al. 2021 eLife', color: '#b39ddb' }
+      { finding: 'Effects of domestication on the gut microbiota parallel those of human industrialization', citation: 'Reese et al. 2021 eLife', color: '#b39ddb' },
+      { finding: 'Early-life antibiotic exposure can set the course of metabolic trajectories into adulthood', citation: 'Schell & Carmody 2025 Cell Host & Microbe', color: '#ef9a9a' },
+      { finding: 'Non-caloric dietary preservatives alter the microbiome and affect host energetic status', citation: 'Schell et al. 2025 Am J Clin Nutr', color: '#80cbc4' },
+      { finding: 'Socially transmissible gut microbes may modulate host disease risk and resilience', citation: 'Sarkar et al. 2024 Cell', color: '#90caf9' },
+      { finding: 'Metabolites from diet-microbe interactions may alter host eating behavior', citation: 'Liow et al. 2025 Trends Endocrinol Metab', color: '#f48fb1' }
     ];
 
     var current = 0;
