@@ -13,6 +13,7 @@
 <body>
   <div id="site-nav"></div>
 
+  <main id="main-content">
   <section class="hero">
     <div class="hero-sidecar">
       <div class="hero-text">
@@ -59,19 +60,11 @@
         </div>
         <button class="hero-arrow hero-arrow-prev" aria-label="Previous slide">&#8249;</button>
         <button class="hero-arrow hero-arrow-next" aria-label="Next slide">&#8250;</button>
-        <div class="hero-dots">
-          <button class="hero-dot active" aria-label="Slide 1"></button>
-          <button class="hero-dot" aria-label="Slide 2"></button>
-          <button class="hero-dot" aria-label="Slide 3"></button>
-          <button class="hero-dot" aria-label="Slide 4"></button>
-          <button class="hero-dot" aria-label="Slide 5"></button>
-          <button class="hero-dot" aria-label="Slide 6"></button>
-          <button class="hero-dot" aria-label="Slide 7"></button>
-          <button class="hero-dot" aria-label="Slide 8"></button>
-          <button class="hero-dot" aria-label="Slide 9"></button>
-          <button class="hero-dot" aria-label="Slide 10"></button>
+        <div class="hero-controls" role="group" aria-label="Slide navigation">
+          <span class="hero-counter" id="hero-counter" aria-live="polite">1 / 10</span>
+          <button class="hero-pause" id="hero-pause" aria-label="Pause slideshow">&#10074;&#10074;</button>
         </div>
-        <div class="slide-caption">
+        <div class="slide-caption" aria-live="polite" aria-atomic="true">
           <p class="slide-label">Our research has shown:</p>
           <p class="slide-finding" id="slide-finding"></p>
           <p class="slide-citation" id="slide-citation"></p>
@@ -83,17 +76,17 @@
   <section class="highlights-section">
     <div class="highlights">
       <a href="research.html" class="highlight-card">
-        <h3>Our Research</h3>
+        <h2>Our Research</h2>
         <p>We probe the energetic consequences of physiological interactions between humans and their resident gut microbes, examining how diet, health, and genetic factors shape microbial contributions to human energy balance.</p>
         <span class="card-link">Learn more &rarr;</span>
       </a>
       <a href="people.html" class="highlight-card">
-        <h3>Our Team</h3>
+        <h2>Our Team</h2>
         <p>A collaborative group of graduate students, postdoctoral fellows, and undergraduate researchers working at the intersection of nutrition, microbiology, and evolutionary biology.</p>
         <span class="card-link">Meet the team &rarr;</span>
       </a>
       <a href="publications.html" class="highlight-card">
-        <h3>Publications</h3>
+        <h2>Publications</h2>
         <p>Over 40 peer-reviewed publications in leading journals including Cell, Nature, Science, and Nature Microbiology, advancing our understanding of the human gut microbiome.</p>
         <span class="card-link">View publications &rarr;</span>
       </a>
@@ -127,6 +120,7 @@
     </div>
   </section>
 
+  </main>
   <div id="site-footer"></div>
   <script src="js/main.js"></script>
 </body>

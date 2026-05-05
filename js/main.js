@@ -24,7 +24,8 @@
     }).join('');
 
     el.innerHTML =
-      '<nav class="navbar" id="navbar">' +
+      '<a href="#main-content" class="skip-link">Skip to main content</a>' +
+      '<nav class="navbar" id="navbar" aria-label="Main navigation">' +
         '<div class="container nav-container">' +
           '<a href="index.html" class="nav-logo">' +
             '<img src="images/logo.png" alt="Carmody Lab – Nutritional and Microbial Ecology" class="nav-logo-img">' +
@@ -34,12 +35,12 @@
           '</button>' +
           '<div class="nav-right">' +
             '<ul class="nav-links" id="nav-links">' + linksHtml + '</ul>' +
-            '<div class="nav-search-wrap" id="nav-search-wrap">' +
+            '<div class="nav-search-wrap" id="nav-search-wrap" role="search">' +
               '<div class="nav-search-bar">' +
-                '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>' +
-                '<input type="text" class="nav-search-input" id="nav-search-input" placeholder="Search..." autocomplete="off">' +
+                '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>' +
+                '<input type="text" class="nav-search-input" id="nav-search-input" placeholder="Search..." autocomplete="off" aria-label="Search the site">' +
               '</div>' +
-              '<div class="nav-search-dropdown" id="nav-search-dropdown"></div>' +
+              '<div class="nav-search-dropdown" id="nav-search-dropdown" role="region" aria-live="polite" aria-label="Search results"></div>' +
             '</div>' +
           '</div>' +
         '</div>' +
@@ -93,7 +94,7 @@
             '</div>' +
           '</div>' +
           '<div class="footer-bottom">' +
-            '<p>&copy; ' + new Date().getFullYear() + ' Carmody Lab, Harvard University. All rights reserved.</p>' +
+            '<p>&copy; ' + new Date().getFullYear() + ' Carmody Lab, Harvard University. All rights reserved. <a href="https://accessibility.harvard.edu/digital-accessibility-policy" target="_blank" rel="noopener">Digital Accessibility</a></p>' +
           '</div>' +
         '</div>' +
       '</footer>';
@@ -116,7 +117,7 @@
 
   function initSlideshow() {
     var slides = document.querySelectorAll('.hero-slide');
-    var dots = document.querySelectorAll('.hero-dot');
+    var counterEl = document.getElementById('hero-counter');
     var prevBtn = document.querySelector('.hero-arrow-prev');
     var nextBtn = document.querySelector('.hero-arrow-next');
     var findingEl = document.getElementById('slide-finding');
@@ -149,13 +150,16 @@
 
     updateCaption(0);
 
+    function updateCounter(index) {
+      if (counterEl) counterEl.textContent = (index + 1) + ' / ' + slides.length;
+    }
+
     function goTo(index) {
       slides[current].classList.remove('active');
-      if (dots[current]) dots[current].classList.remove('active');
       current = index;
       slides[current].classList.add('active');
-      if (dots[current]) dots[current].classList.add('active');
       updateCaption(current);
+      updateCounter(current);
     }
 
     function next() {
@@ -173,16 +177,29 @@
 
     interval = setInterval(next, 10000);
 
-    dots.forEach(function (dot, i) {
-      dot.addEventListener('click', function () {
-        stopAutoplay();
-        goTo(i);
+    var pauseBtn = document.getElementById('hero-pause');
+    if (pauseBtn) {
+      pauseBtn.addEventListener('click', function () {
+        if (paused) {
+          interval = setInterval(next, 10000);
+          paused = false;
+          this.innerHTML = '&#10074;&#10074;';
+          this.setAttribute('aria-label', 'Pause slideshow');
+        } else {
+          stopAutoplay();
+          this.innerHTML = '&#9654;';
+          this.setAttribute('aria-label', 'Play slideshow');
+        }
       });
-    });
+    }
 
     if (prevBtn) {
       prevBtn.addEventListener('click', function () {
         stopAutoplay();
+        if (pauseBtn) {
+          pauseBtn.innerHTML = '&#9654;';
+          pauseBtn.setAttribute('aria-label', 'Play slideshow');
+        }
         prev();
       });
     }
@@ -190,6 +207,10 @@
     if (nextBtn) {
       nextBtn.addEventListener('click', function () {
         stopAutoplay();
+        if (pauseBtn) {
+          pauseBtn.innerHTML = '&#9654;';
+          pauseBtn.setAttribute('aria-label', 'Play slideshow');
+        }
         next();
       });
     }
@@ -199,20 +220,48 @@
     var boxes = document.querySelectorAll('.research-box[data-rbox]');
     if (boxes.length === 0) return;
 
-    boxes.forEach(function (box) {
-      box.addEventListener('click', function () {
-        var id = this.getAttribute('data-rbox');
+    function activateTab(box) {
+      var id = box.getAttribute('data-rbox');
 
-        document.querySelectorAll('.research-box').forEach(function (b) {
-          b.classList.remove('active');
-        });
-        document.querySelectorAll('.research-detail').forEach(function (d) {
-          d.classList.remove('active');
-        });
+      boxes.forEach(function (b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+        b.setAttribute('tabindex', '-1');
+      });
+      document.querySelectorAll('.research-detail').forEach(function (d) {
+        d.classList.remove('active');
+      });
 
-        this.classList.add('active');
-        var detail = document.getElementById('rdetail-' + id);
-        if (detail) detail.classList.add('active');
+      box.classList.add('active');
+      box.setAttribute('aria-selected', 'true');
+      box.setAttribute('tabindex', '0');
+      var detail = document.getElementById('rdetail-' + id);
+      if (detail) detail.classList.add('active');
+    }
+
+    boxes.forEach(function (box, i) {
+      box.setAttribute('tabindex', i === 0 ? '0' : '-1');
+      box.addEventListener('click', function () { activateTab(this); });
+      box.addEventListener('keydown', function (e) {
+        var idx = Array.prototype.indexOf.call(boxes, this);
+        var next;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          next = boxes[(idx + 1) % boxes.length];
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          next = boxes[(idx - 1 + boxes.length) % boxes.length];
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          next = boxes[0];
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          next = boxes[boxes.length - 1];
+        }
+        if (next) {
+          activateTab(next);
+          next.focus();
+        }
       });
     });
   }
@@ -414,6 +463,39 @@
     }
   }
 
+  function initBioTruncation() {
+    var bios = document.querySelectorAll('.person-bio');
+    bios.forEach(function (bio) {
+      if (bio.scrollHeight <= bio.clientHeight) return;
+      var toggle = document.createElement('button');
+      toggle.className = 'person-bio-toggle';
+      toggle.textContent = 'Read more';
+      toggle.setAttribute('aria-expanded', 'false');
+      bio.parentNode.insertBefore(toggle, bio.nextSibling);
+
+      function expand() {
+        bio.classList.toggle('expanded');
+        var isExpanded = bio.classList.contains('expanded');
+        toggle.textContent = isExpanded ? 'Show less' : 'Read more';
+        toggle.setAttribute('aria-expanded', String(isExpanded));
+      }
+
+      toggle.addEventListener('click', expand);
+      bio.addEventListener('click', expand);
+    });
+  }
+
+  function markExternalLinks() {
+    var links = document.querySelectorAll('a[target="_blank"]');
+    links.forEach(function (link) {
+      if (link.querySelector('.sr-only')) return;
+      var span = document.createElement('span');
+      span.className = 'sr-only';
+      span.textContent = ' (opens in new tab)';
+      link.appendChild(span);
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     renderNav();
     renderFooter();
@@ -421,5 +503,7 @@
     initSlideshow();
     initResearchTabs();
     initSearch();
+    initBioTruncation();
+    markExternalLinks();
   });
 })();
