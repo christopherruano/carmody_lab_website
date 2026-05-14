@@ -139,6 +139,8 @@ ul { list-style: none; }
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  max-width: 100%;
+  padding: 0 48px;
 }
 
 .nav-logo {
@@ -370,6 +372,8 @@ ul { list-style: none; }
 .hero-slideshow {
   position: relative;
   width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
 }
 
 .hero-slide {
@@ -429,7 +433,6 @@ ul { list-style: none; }
   font-size: clamp(11px, 1vw, 13px);
   color: rgba(255, 255, 255, 0.5);
   line-height: 1.6;
-  font-style: italic;
   transition: opacity 0.4s ease;
 }
 
@@ -786,6 +789,12 @@ ul { list-style: none; }
   margin-top: 2px;
 }
 
+.person-role-former {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin-top: 2px;
+}
+
 .person-email {
   font-size: 13px;
   color: var(--color-text-muted);
@@ -866,7 +875,6 @@ ul { list-style: none; }
 .pub-journal {
   font-size: 14px;
   color: var(--color-text-muted);
-  font-style: italic;
 }
 
 .pub-links {

@@ -28,7 +28,7 @@
       '<nav class="navbar" id="navbar" aria-label="Main navigation">' +
         '<div class="container nav-container">' +
           '<a href="index.html" class="nav-logo">' +
-            '<img src="images/logo.png" alt="Carmody Lab – Nutritional and Microbial Ecology" class="nav-logo-img">' +
+            '<img src="images/logo.png" alt="Carmody Laboratory – Nutritional and Microbial Ecology" class="nav-logo-img">' +
           '</a>' +
           '<button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">' +
             '<span></span><span></span><span></span>' +
@@ -76,8 +76,8 @@
         '<div class="container">' +
           '<div class="footer-grid">' +
             '<div class="footer-col">' +
-              '<h4>Carmody Lab</h4>' +
-              '<p>Nutritional &amp; Microbial Ecology Lab</p>' +
+              '<h4>Carmody Laboratory</h4>' +
+              '<p>Nutritional &amp; Microbial Ecology Laboratory</p>' +
               '<p><a href="https://heb.fas.harvard.edu" target="_blank" rel="noopener">Department of Human Evolutionary Biology</a></p>' +
               '<p>Harvard University</p>' +
             '</div>' +
@@ -94,7 +94,7 @@
             '</div>' +
           '</div>' +
           '<div class="footer-bottom">' +
-            '<p>&copy; ' + new Date().getFullYear() + ' Carmody Lab, Harvard University. All rights reserved. <a href="https://accessibility.harvard.edu/digital-accessibility-policy" target="_blank" rel="noopener">Digital Accessibility</a></p>' +
+            '<p>&copy; ' + new Date().getFullYear() + ' Carmody Laboratory, Harvard University. All rights reserved. <a href="https://accessibility.harvard.edu/digital-accessibility-policy" target="_blank" rel="noopener">Digital Accessibility</a></p>' +
           '</div>' +
         '</div>' +
       '</footer>';
@@ -125,16 +125,16 @@
     if (slides.length === 0) return;
 
     var slideData = [
-      { finding: 'Diet dominates host genotype in shaping the gut microbiota', citation: 'Carmody et al. 2015 Cell Host & Microbe', color: '#7ecde6' },
-      { finding: 'Gut microbes help metabolize drugs and diet-derived xenobiotics', citation: 'Carmody & Turnbaugh 2014 J Clin Invest', color: '#e89090' },
-      { finding: 'Cooking and non-thermal food processing increase calories gained from food', citation: 'Carmody et al. 2011 PNAS; Groopman et al. 2015 Am J Phys Anthropol', color: '#aed581' },
-      { finding: 'Cooking shapes the structure and function of the gut microbiome, affecting energy balance', citation: 'Carmody et al. 2019 Nat Microbiol', color: '#ffd54f' },
-      { finding: 'The gut microbiota matures differently in humans and wild chimpanzees', citation: 'Reese et al. 2021 Current Biology', color: '#d7ccc8' },
-      { finding: 'Effects of domestication on the gut microbiota parallel those of human industrialization', citation: 'Reese et al. 2021 eLife', color: '#b39ddb' },
-      { finding: 'Early-life antibiotic exposure can set the course of metabolic trajectories into adulthood', citation: 'Schell & Carmody 2025 Cell Host & Microbe', color: '#ef9a9a' },
-      { finding: 'Non-caloric dietary preservatives alter the microbiome and affect host energetic status', citation: 'Schell et al. 2025 Am J Clin Nutr', color: '#80cbc4' },
-      { finding: 'Socially transmissible gut microbes may modulate host disease risk and resilience', citation: 'Sarkar et al. 2024 Cell', color: '#90caf9' },
-      { finding: 'Metabolites from diet-microbe interactions may alter host eating behavior', citation: 'Liow et al. 2025 Trends Endocrinol Metab', color: '#f48fb1' }
+      { finding: 'Diet dominates host genotype in shaping the gut microbiota', citation: 'Carmody et al. 2015 <em>Cell Host &amp; Microbe</em>', color: '#7ecde6' },
+      { finding: 'Gut microbes help metabolize drugs and diet-derived xenobiotics', citation: 'Carmody &amp; Turnbaugh 2014 <em>J Clin Invest</em>', color: '#e89090' },
+      { finding: 'Cooking and non-thermal food processing increase calories gained from food', citation: 'Carmody et al. 2011 <em>PNAS</em>; Groopman et al. 2015 <em>Am J Phys Anthropol</em>', color: '#aed581' },
+      { finding: 'Cooking shapes the structure and function of the gut microbiome, affecting energy balance', citation: 'Carmody et al. 2019 <em>Nat Microbiol</em>', color: '#ffd54f' },
+      { finding: 'The gut microbiota matures differently in humans and wild chimpanzees', citation: 'Reese et al. 2021 <em>Current Biology</em>', color: '#d7ccc8' },
+      { finding: 'Effects of domestication on the gut microbiota parallel those of human industrialization', citation: 'Reese et al. 2021 <em>eLife</em>', color: '#b39ddb' },
+      { finding: 'Early-life antibiotic exposure can set the course of metabolic trajectories into adulthood', citation: 'Schell &amp; Carmody 2025 <em>Cell Host &amp; Microbe</em>', color: '#ef9a9a' },
+      { finding: 'Non-caloric dietary preservatives alter the microbiome and affect host energetic status', citation: 'Schell et al. 2025 <em>Am J Clin Nutr</em>', color: '#80cbc4' },
+      { finding: 'Socially transmissible gut microbes may modulate host disease risk and resilience', citation: 'Sarkar et al. 2024 <em>Cell</em>', color: '#90caf9' },
+      { finding: 'Metabolites from diet-microbe interactions may alter host eating behavior', citation: 'Liow et al. 2025 <em>Trends Endocrinol Metab</em>', color: '#f48fb1' }
     ];
 
     var current = 0;
@@ -145,7 +145,7 @@
       if (!findingEl || !citationEl) return;
       findingEl.textContent = slideData[index].finding;
       findingEl.style.color = slideData[index].color;
-      citationEl.textContent = slideData[index].citation;
+      citationEl.innerHTML = slideData[index].citation;
     }
 
     updateCaption(0);
@@ -268,7 +268,7 @@
 
   var searchIndex = [
     // People - Current
-    { page: 'People', url: 'people.html', title: 'Rachel Carmody', text: 'Thomas D. Cabot Associate Professor of Human Evolutionary Biology. Principal Investigator, Nutritional & Microbial Ecology Laboratory. I seek to understand how the human body acquires and utilizes energy, and how past changes in energy budget have shaped human evolution.' },
+    { page: 'People', url: 'people.html', title: 'Rachel Carmody', text: 'Thomas D. Cabot Associate Professor of Human Evolutionary Biology. Principal Investigator, Nutritional & Microbial Ecology Laboratoryoratory. I seek to understand how the human body acquires and utilizes energy, and how past changes in energy budget have shaped human evolution.' },
     { page: 'People', url: 'people.html', title: 'Cary Allen-Blevins', text: 'Lecturer, Former Graduate Student. Interested in how nutrition can affect behavior via the microbiota-gut-brain axis. Studying co-evolution between mother\'s milk and microbes of the infant gut.' },
     { page: 'People', url: 'people.html', title: 'Alex Cooper-Hohn', text: 'Post-Baccalaureate Researcher.' },
     { page: 'People', url: 'people.html', title: 'Neil Ibata', text: 'Postdoctoral Fellow.' },
@@ -336,7 +336,7 @@
     { page: 'Research', url: 'research.html', title: 'Comparative gut microbiomes', text: 'How and why are human gut microbiomes different from those of other species? Humans have a unique ecological history driven by calorie-rich, highly omnivorous and processed diets, changes in life history, and cooperation.' },
 
     // Laboratory
-    { page: 'Laboratory', url: 'laboratory.html', title: 'Lab Facilities', text: 'Constructed in 2016, the Nutritional & Microbial Ecology Laboratory. 1,627 square feet ADA-compliant facilities. 10 dedicated bench workstations, chemical hoods, anaerobic culturing, PCR, cold room. Peabody Museum, 11 Divinity Avenue, 5th Floor.' },
+    { page: 'Laboratory', url: 'laboratory.html', title: 'Lab Facilities', text: 'Constructed in 2016, the Nutritional & Microbial Ecology Laboratoryoratory. 1,627 square feet ADA-compliant facilities. 10 dedicated bench workstations, chemical hoods, anaerobic culturing, PCR, cold room. Peabody Museum, 11 Divinity Avenue, 5th Floor.' },
     { page: 'Laboratory', url: 'laboratory.html', title: 'Nutritional Biochemistry', text: 'Dietary protein, lipid, carbohydrate (sugar, starch, insoluble and soluble fiber), ash, moisture analysis.' },
     { page: 'Laboratory', url: 'laboratory.html', title: 'Physiology', text: 'Metabolic rate by open-flow and closed-system respirometry. Nutrient intake by perfusion. Body composition by magnetic resonance imaging. Physiological cell staining.' },
     { page: 'Laboratory', url: 'laboratory.html', title: 'Microbial Ecology', text: 'Anaerobic and aerobic culturing. Assessment of point-in-time and kinetic growth. Quantitative PCR. DNA and RNA sequencing.' },
@@ -359,7 +359,7 @@
     { page: 'News', url: 'news.html', title: 'Roslyn Abramson Award (2022)', text: 'Rachel has won the 2022 Roslyn Abramson Award for excellence and sensitivity in the teaching of undergraduates.' },
 
     // Home
-    { page: 'Home', url: 'index.html', title: 'Carmody Lab', text: 'Nutritional & Microbial Ecology Lab. Harvard University. Department of Human Evolutionary Biology. We study how the gut microbiome shapes human health and evolution, probing the energetic consequences of interactions between humans and the trillions of microbes in the gastrointestinal tract.' }
+    { page: 'Home', url: 'index.html', title: 'Carmody Laboratory', text: 'Nutritional & Microbial Ecology Laboratory. Harvard University. Department of Human Evolutionary Biology. We study how the gut microbiome shapes human health and evolution, probing the energetic consequences of interactions between humans and the trillions of microbes in the gastrointestinal tract.' }
   ];
 
   function initSearch() {
