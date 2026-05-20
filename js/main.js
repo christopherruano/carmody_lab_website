@@ -220,8 +220,21 @@
     var boxes = document.querySelectorAll('.research-box[data-rbox]');
     if (boxes.length === 0) return;
 
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+    if (isMobile) {
+      var boxContainer = document.querySelector('.research-boxes');
+      boxContainer.classList.add('mobile-sections');
+      boxes.forEach(function (box) {
+        var id = box.getAttribute('data-rbox');
+        var detail = document.getElementById('rdetail-' + id);
+        if (detail) box.after(detail);
+      });
+    }
+
     function activateTab(box) {
       var id = box.getAttribute('data-rbox');
+      var wasActive = box.classList.contains('active');
 
       boxes.forEach(function (b) {
         b.classList.remove('active');
@@ -232,11 +245,13 @@
         d.classList.remove('active');
       });
 
-      box.classList.add('active');
-      box.setAttribute('aria-selected', 'true');
-      box.setAttribute('tabindex', '0');
-      var detail = document.getElementById('rdetail-' + id);
-      if (detail) detail.classList.add('active');
+      if (!wasActive || !isMobile) {
+        box.classList.add('active');
+        box.setAttribute('aria-selected', 'true');
+        box.setAttribute('tabindex', '0');
+        var detail = document.getElementById('rdetail-' + id);
+        if (detail) detail.classList.add('active');
+      }
     }
 
     boxes.forEach(function (box, i) {
