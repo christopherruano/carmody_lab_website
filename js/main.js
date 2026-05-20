@@ -125,16 +125,16 @@
     if (slides.length === 0) return;
 
     var slideData = [
-      { finding: 'Diet dominates host genotype in shaping the gut microbiota', citation: 'Carmody et al. 2015 <em>Cell Host &amp; Microbe</em>', color: '#7ecde6' },
-      { finding: 'Gut microbes help metabolize drugs and diet-derived xenobiotics', citation: 'Carmody &amp; Turnbaugh 2014 <em>J Clin Invest</em>', color: '#e89090' },
-      { finding: 'Cooking and non-thermal food processing increase calories gained from food', citation: 'Carmody et al. 2011 <em>PNAS</em>; Groopman et al. 2015 <em>Am J Phys Anthropol</em>', color: '#aed581' },
-      { finding: 'Cooking shapes the structure and function of the gut microbiome, affecting energy balance', citation: 'Carmody et al. 2019 <em>Nat Microbiol</em>', color: '#ffd54f' },
-      { finding: 'The gut microbiota matures differently in humans and wild chimpanzees', citation: 'Reese et al. 2021 <em>Current Biology</em>', color: '#d7ccc8' },
-      { finding: 'Effects of domestication on the gut microbiota parallel those of human industrialization', citation: 'Reese et al. 2021 <em>eLife</em>', color: '#b39ddb' },
-      { finding: 'Early-life antibiotic exposure can set the course of metabolic trajectories into adulthood', citation: 'Schell &amp; Carmody 2025 <em>Cell Host &amp; Microbe</em>', color: '#ef9a9a' },
-      { finding: 'Non-caloric dietary preservatives alter the microbiome and affect host energetic status', citation: 'Schell et al. 2025 <em>Am J Clin Nutr</em>', color: '#80cbc4' },
-      { finding: 'Socially transmissible gut microbes may modulate host disease risk and resilience', citation: 'Sarkar et al. 2024 <em>Cell</em>', color: '#90caf9' },
-      { finding: 'Metabolites from diet-microbe interactions may alter host eating behavior', citation: 'Liow et al. 2025 <em>Trends Endocrinol Metab</em>', color: '#f48fb1' }
+      { finding: 'Diet is a stronger predictor of gut microbiome composition than host genetics', citation: 'Carmody et al. 2015, <em>Cell Host &amp; Microbe</em>' },
+      { finding: 'Gut microbes help metabolize drugs and diet-derived xenobiotics', citation: 'Carmody &amp; Turnbaugh 2014, <em>Journal of Clinical Investigation</em>' },
+      { finding: 'Cooking and non-thermal food processing increase calories gained from food', citation: 'Carmody et al. 2011, <em>Proceedings of the National Academy of Sciences</em><br>Groopman et al. 2015, <em>American Journal of Physical Anthropology</em>' },
+      { finding: 'Cooking shapes the structure and function of the gut microbiome, affecting energy balance', citation: 'Carmody et al. 2019, <em>Nature Microbiology</em>' },
+      { finding: 'The gut microbiota matures differently in humans and wild chimpanzees', citation: 'Reese et al. 2021, <em>Current Biology</em>' },
+      { finding: 'Effects of domestication on the gut microbiota parallel those of human industrialization', citation: 'Reese et al. 2021, <em>eLife</em>' },
+      { finding: 'Early-life antibiotic exposure can set the course of metabolic trajectories into adulthood', citation: 'Schell &amp; Carmody 2025, <em>Cell Host &amp; Microbe</em>' },
+      { finding: 'Non-caloric dietary preservatives alter the microbiome and affect host energetic status', citation: 'Schell et al. 2025, <em>American Journal of Clinical Nutrition</em>' },
+      { finding: 'Socially transmissible gut microbes may modulate host disease risk and resilience', citation: 'Sarkar et al. 2024, <em>Cell</em>' },
+      { finding: 'Metabolites from diet-microbe interactions may alter host eating behavior', citation: 'Liow et al. 2025, <em>Trends in Endocrinology &amp; Metabolism</em>' }
     ];
 
     var current = 0;
@@ -144,7 +144,6 @@
     function updateCaption(index) {
       if (!findingEl || !citationEl) return;
       findingEl.textContent = slideData[index].finding;
-      findingEl.style.color = slideData[index].color;
       citationEl.innerHTML = slideData[index].citation;
     }
 
@@ -288,13 +287,13 @@
     { page: 'People', url: 'people.html', title: 'Alex Cooper-Hohn', text: 'Post-Baccalaureate Researcher.' },
     { page: 'People', url: 'people.html', title: 'Neil Ibata', text: 'Postdoctoral Fellow.' },
     { page: 'People', url: 'people.html', title: 'John Kahumbu', text: 'Graduate Student.' },
-    { page: 'People', url: 'people.html', title: 'Yi Jia (Claire) Liow', text: 'Visiting Fellow, Graduate Student at University of Tokyo. Research explores the intersection of nutritional neuroscience, the gut microbiome, and eating behavior.' },
+    { page: 'People', url: 'people.html', title: 'Yi Jia (Claire) Liow', text: 'Former Visiting Fellow. Postdoctoral Fellow, Bohórquez Lab, Duke University. Research explores the intersection of nutritional neuroscience, the gut microbiome, and eating behavior.' },
     { page: 'People', url: 'people.html', title: 'Cameron McInroy', text: 'Post-Baccalaureate Researcher.' },
-    { page: 'People', url: 'people.html', title: 'Chris Ruaño', text: 'Undergraduate Researcher.' },
+    { page: 'People', url: 'people.html', title: 'Christopher Ruaño', text: 'Undergraduate Researcher.' },
     { page: 'People', url: 'people.html', title: 'Grace Rubin', text: 'Graduate Student.' },
     { page: 'People', url: 'people.html', title: 'Amar Sarkar', text: 'Graduate Student. Completed master\'s degrees at Oxford and Cambridge. Interested in human health, development, and evolution. Studies host-microbe interactions using an evolutionary framework.' },
     { page: 'People', url: 'people.html', title: 'Laura Schell', text: 'Postdoctoral Fellow, Former Graduate Student & NSF Graduate Research Fellow. Interested in the co-evolution of humans with gut microbiota and how plasticity in the gut microbiome contributes to variations in host phenotype.' },
-    { page: 'People', url: 'people.html', title: 'Emily Venable', text: 'Graduate Student, NSF Graduate Research Fellow. Studies how variations in the human diet affect the composition and function of the gut microbiome.' },
+    { page: 'People', url: 'people.html', title: 'Emily Venable', text: 'Former Graduate Student & NSF Graduate Research Fellow. Life Science Specialist, L.E.K. Consulting. Studied how variations in the human diet affect the composition and function of the gut microbiome.' },
     { page: 'People', url: 'people.html', title: 'Ludovico Rollo', text: 'Former Undergraduate Researcher and Hoopes Prize Awardee, Current Collaborator.' },
 
     // People - Former
