@@ -606,7 +606,7 @@ ul { list-style: none; }
   position: absolute;
   inset: 0;
   background-image: url('../images/microbe-bg.png');
-  background-size: 500px auto;
+  background-size: 800px auto;
   background-repeat: repeat;
   mix-blend-mode: overlay;
   opacity: 0.12;

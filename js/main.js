@@ -94,7 +94,7 @@
             '</div>' +
           '</div>' +
           '<div class="footer-bottom">' +
-            '<p>&copy; ' + new Date().getFullYear() + ' Carmody Laboratory, Harvard University. All rights reserved. <a href="https://accessibility.harvard.edu/digital-accessibility-policy" target="_blank" rel="noopener">Digital Accessibility</a></p>' +
+            '<p>&copy; ' + new Date().getFullYear() + ' Carmody Laboratory, Harvard University. All rights reserved. <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" target="_blank" rel="noopener">Digital Accessibility</a></p>' +
           '</div>' +
         '</div>' +
       '</footer>';
