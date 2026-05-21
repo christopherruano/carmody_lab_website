@@ -606,10 +606,10 @@ ul { list-style: none; }
   position: absolute;
   inset: 0;
   background-image: url('../images/microbe-bg.png');
-  background-size: 1400px auto;
+  background-size: 1800px auto;
   background-repeat: repeat;
   mix-blend-mode: overlay;
-  opacity: 0.18;
+  opacity: 0.24;
 }
 
 .page-header .container { position: relative; z-index: 1; }
