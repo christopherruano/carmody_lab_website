@@ -94,6 +94,24 @@ features when you edit.
 - Keep this file, `Maintenance-Guide.pdf`, and `Handoff-Notes.pdf` correct when the
   structure changes.
 
+## Content bot (news form)
+A GitHub Action lets a lab member add a news item from a form. A person does not use
+a terminal for this task.
+
+- The form is `.github/ISSUE_TEMPLATE/add-news.yml`. It makes an issue with a title
+  that starts with `News:`.
+- The workflow `.github/workflows/content-bot.yml` runs on that issue. It runs
+  `scripts/add-news.mjs`. The script edits `news.html`, the Recent News list in
+  `index.html`, and the `searchIndex` in `js/main.js`. Then the workflow opens a
+  pull request. Nothing goes live until a person merges the pull request.
+- The workflow runs only for a repository collaborator (the author-association gate).
+- The generator is deterministic. It does not use an AI. It only rewrites the
+  existing HTML patterns. If you change those patterns, update the string anchors in
+  `scripts/add-news.mjs`.
+- To add a "person" form or a "publication" form later, copy this pattern: a new
+  issue-form YAML, a new `scripts/add-*.mjs`, and a new job in the workflow.
+- Claude Code does all other changes. The bot covers only the most frequent task.
+
 ## Regenerate the guides
 `Maintenance-Guide.pdf` and `Handoff-Notes.pdf` are the guides for people. A tool
 makes them. A person does not edit them by hand. The source is in `guide-src/`

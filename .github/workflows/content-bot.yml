@@ -1,0 +1,56 @@
+name: Content bot
+
+# When a lab member submits the "Add a news item" form (an issue whose title
+# starts with "News:"), this workflow edits the site the correct way and opens a
+# pull request. Nothing goes live until a person clicks Merge on that pull request.
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  add-news:
+    # Only run for the news form, and only when a repo collaborator opened it.
+    if: >
+      startsWith(github.event.issue.title, 'News:') &&
+      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.issue.author_association)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the news item
+        id: gen
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: node scripts/add-news.mjs
+
+      - name: Open a pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          NEWS_DATE: ${{ steps.gen.outputs.date }}
+        run: |
+          set -e
+          BRANCH="content/news-${ISSUE_NUMBER}"
+          git config user.name "carmody-content-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add -A
+          git commit -m "Add news item: ${NEWS_DATE}"
+          git push -u origin "$BRANCH"
+          PR_BODY=$(printf 'Prepared from #%s. Review the change below, then click **Merge** to publish. The website updates about 1 minute after you merge.\n\nCloses #%s' "$ISSUE_NUMBER" "$ISSUE_NUMBER")
+          gh pr create --base main --head "$BRANCH" --title "Add news item: ${NEWS_DATE}" --body "$PR_BODY"
+          gh issue comment "$ISSUE_NUMBER" --body "Thank you. I prepared the change and opened a pull request. Open it, look at the change, then click **Merge** to publish."
+
+      - name: Report a problem
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body "Sorry, I could not prepare this change. Please check the Date and News text, or ask Claude Code to add it."

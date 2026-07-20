@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Any other change (people, publications, text, photos, fixes)
+    url: https://github.com/christopherruano/carmody_lab_website/blob/main/Maintenance-Guide.pdf
+    about: For anything except a news item, use Claude Code. The Maintenance Guide has ready-to-use prompts.

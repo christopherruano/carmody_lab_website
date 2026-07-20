@@ -1,0 +1,27 @@
+name: Add a news item
+description: Add a news item to the website (the News page and the home page).
+title: "News: "
+labels: ["content: news"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill in the 2 fields below. Then click **Submit new issue**.
+        The website prepares the change for you and opens a pull request.
+        Look at the pull request. Then click **Merge** to publish. The change is live about 1 minute later.
+  - type: input
+    id: date
+    attributes:
+      label: Date
+      description: The date of the news. Write it out in full.
+      placeholder: July 15, 2026
+    validations:
+      required: true
+  - type: textarea
+    id: text
+    attributes:
+      label: News text
+      description: The announcement, in the exact words that you want on the website.
+      placeholder: Congratulations to graduate student ... on ...
+    validations:
+      required: true
