@@ -283,6 +283,7 @@
 
   var searchIndex = [
     // People - Current
+    { page: 'People', url: 'people.html', title: 'Test McTestface', text: 'Visiting Researcher. Automated test of the content bot. Not a real person.' },
     { page: 'People', url: 'people.html', title: 'Rachel Carmody', text: 'Thomas D. Cabot Associate Professor of Human Evolutionary Biology. Principal Investigator, Nutritional & Microbial Ecology Laboratory. I seek to understand how the human body acquires and utilizes energy, and how past changes in energy budget have shaped human evolution.' },
     { page: 'People', url: 'people.html', title: 'Cary Allen-Blevins', text: 'Lecturer, Former Graduate Student. Interested in how nutrition can affect behavior via the microbiota-gut-brain axis. Studying co-evolution between mother\'s milk and microbes of the infant gut.' },
     { page: 'People', url: 'people.html', title: 'Alex Cooper-Hohn', text: 'Associate Researcher.' },
