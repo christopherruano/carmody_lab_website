@@ -310,7 +310,6 @@
     { page: 'People', url: 'people.html', title: 'Jinhui Liu', text: 'Former Visiting Undergraduate Student.' },
     { page: 'People', url: 'people.html', title: 'Brandi Moore', text: 'Former Undergraduate Researcher. Ph.D. candidate in Epidemiology, SPOTLIGHT Lab, New York University.' },
     { page: 'People', url: 'people.html', title: 'Aspen Reese', text: 'Former Postdoctoral Fellow. Biodiversity Manager, University of Cambridge.' },
-    { page: 'People', url: 'people.html', title: 'Dina Zeldin', text: 'Former Undergraduate Researcher.' },
 
     // Publications
     { page: 'Publications', url: 'publications.html', title: 'Schell, Liow & Carmody (2026)', text: 'Fasting and re-feeding independently alter mouse gut microbiota during intermittent fasting. bioRxiv preprint.' },
