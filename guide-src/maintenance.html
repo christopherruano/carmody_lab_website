@@ -10,117 +10,117 @@
 <div class="masthead">
   <p class="eyebrow">Carmody Laboratory &middot; Harvard University</p>
   <h1 class="title">Website Maintenance Guide</h1>
-  <p class="lede">How to keep <strong>nme.fas.harvard.edu</strong> up to date — written so you never need to touch code.</p>
+  <p class="lede">This guide tells you how to update the website <strong>nme.fas.harvard.edu</strong>. You do not have to write code.</p>
   <div class="meta-row">
-    <span>Live site: <strong>nme.fas.harvard.edu</strong></span>
-    <span>Built by Christopher Rua&ntilde;o</span>
-    <span>Updated July 2026</span>
+    <span>Website: <strong>nme.fas.harvard.edu</strong></span>
+    <span>Made by Christopher Rua&ntilde;o</span>
+    <span>Date: July 2026</span>
   </div>
 </div>
 
 <section class="block">
   <span class="sec-num">Section 01</span>
-  <h2 class="sec">The big picture</h2>
-  <p>You do <strong>not</strong> need to know how to code. The idea is simple: you open a tool called <strong>Claude Code</strong>, tell it in plain English what you want changed, it makes the change, and it publishes it to the live website.</p>
+  <h2 class="sec">How the website works</h2>
+  <p>You do not have to write code. You use a tool that has the name <strong>Claude Code</strong>. You tell Claude Code what to change. Claude Code changes the files. Then Claude Code publishes the change to the website.</p>
   <ul class="clean">
-    <li>The website's files are stored on <strong>GitHub</strong> (a service that keeps files and a full history of every change).</li>
-    <li>The public site is <strong>nme.fas.harvard.edu</strong>.</li>
-    <li>When a change is saved and uploaded to GitHub, the live site updates <strong>automatically within about a minute</strong>. There's no "publish" button and no web server to log into.</li>
-    <li><strong>Claude Code</strong> is an assistant that runs on your computer. You talk to it in a chat window, like texting a very capable assistant sitting at your keyboard.</li>
+    <li><strong>GitHub</strong> keeps the website files. GitHub also keeps a record of each change.</li>
+    <li>The address of the website is <strong>nme.fas.harvard.edu</strong>.</li>
+    <li>When you publish a change, the website shows the change in about 1 minute. There is no publish button. There is no server to log in to.</li>
+    <li><strong>Claude Code</strong> is an assistant on your computer. You use a chat window to give instructions to Claude Code.</li>
   </ul>
-  <div class="callout tip"><span class="ic">&#10022;</span><p>Nothing you do here can permanently break the site. Every change is saved in GitHub's history and can be undone &mdash; see Section 07.</p></div>
+  <div class="callout tip"><span class="ic">&#10022;</span><p>You cannot break the website permanently. GitHub keeps each change in its record. You can undo each change. Refer to Section 07.</p></div>
 </section>
 
 <section class="block">
   <span class="sec-num">Section 02</span>
-  <h2 class="sec">One-time setup</h2>
-  <p>You do this section <strong>once</strong>. After it's done, day-to-day edits take a few minutes.</p>
-  <h3>What you need</h3>
-  <ol class="steps">
+  <h2 class="sec">First-time setup</h2>
+  <p>Do the steps in this section one time. After this, each change takes only a few minutes.</p>
+  <h3>You need these items</h3>
+  <ul class="clean">
     <li>A <strong>computer</strong> (Mac or Windows).</li>
-    <li>A <strong>GitHub account</strong>. You've been added as an <strong>Admin</strong> on the website's repository, so you already have full control. The repository is <code>github.com/christopherruano/carmody_lab_website</code>.</li>
-    <li><strong>Claude Code installed.</strong> Chris or the department's computing support can install this and sign you in with a Claude account. Once installed, you open it from the Terminal app by typing <code>claude</code> and pressing Enter.</li>
-  </ol>
-  <div class="callout tip"><span class="ic">&#10022;</span><p>Ask whoever sets you up to walk through one news update <strong>with you</strong> the first time, so you see the whole loop once. After that you'll be comfortable.</p></div>
-  <h3>The one folder you'll open</h3>
-  <p>The website files live in a folder on your computer (the person who sets you up will make a one-click shortcut). You never open the individual files yourself &mdash; you just start Claude Code <strong>inside that folder</strong>, then type your request.</p>
+    <li>A <strong>GitHub account</strong>. You are an Admin of the website. An Admin has full control. The website files are at <code>github.com/christopherruano/carmody_lab_website</code>.</li>
+    <li><strong>Claude Code</strong>, installed on the computer. Chris or the IT team can install Claude Code. They can also sign you in. To start Claude Code, open the Terminal app, type <code>claude</code>, and push the Enter key.</li>
+  </ul>
+  <div class="callout tip"><span class="ic">&#10022;</span><p>Ask a person to do one news update with you the first time. Then you see all the steps one time. After this, the steps are easy.</p></div>
+  <h3>The folder for the website</h3>
+  <p>The website files are in a folder on your computer. The person who helps you makes a shortcut to this folder. You do not open the files. You start Claude Code in this folder. Then you type your request.</p>
 </section>
 
 <section class="block">
   <span class="sec-num">Section 03</span>
-  <h2 class="sec">How every edit works</h2>
-  <p>Every single change follows the same three steps:</p>
+  <h2 class="sec">How to make a change</h2>
+  <p>Each change has the same 3 steps:</p>
   <ol class="steps">
-    <li><strong>Tell Claude Code what you want</strong>, in plain English (see the recipes below). Be specific &mdash; names, dates, and exact wording.</li>
-    <li><strong>Let it make the change and show you.</strong> It's fine to ask <em>"show me what the news page looks like now"</em> before publishing.</li>
-    <li><strong>Ask it to publish.</strong> Say the prompt below. Within about a minute the change appears on the live site (you may need a hard refresh: <strong>Cmd+Shift+R</strong> on Mac, <strong>Ctrl+F5</strong> on Windows).</li>
+    <li><strong>Tell Claude Code what to change.</strong> Write in usual English. Give the names, the dates, and the exact words.</li>
+    <li><strong>Let Claude Code make the change.</strong> Then ask Claude Code to show you the result.</li>
+    <li><strong>Tell Claude Code to publish the change.</strong> Use the prompt below. The website shows the change in about 1 minute.</li>
   </ol>
   <div class="prompt">
-    <div class="prompt-label">Say this to publish</div>
-    <p class="prompt-text">Looks good &mdash; please commit and push this so it goes live.</p>
+    <div class="prompt-label">Prompt to publish</div>
+    <p class="prompt-text">The change is good. Publish it to the website.</p>
   </div>
-  <div class="callout tip"><span class="ic">&#10022;</span><p>You can make several changes before publishing. Do them all, preview, then publish once at the end.</p></div>
+  <div class="callout tip"><span class="ic">&#10022;</span><p>You can make more than one change before you publish. Make all the changes. Look at the result. Then publish one time. If you do not see the change, refresh the page. On a Mac, push Cmd+Shift+R. On Windows, push Ctrl+F5.</p></div>
 </section>
 
 <section class="block">
   <span class="sec-num">Section 04</span>
-  <h2 class="sec">Copy-paste recipes</h2>
-  <p>Copy a prompt, paste it into Claude Code, and fill in the <span class="fill">[bracketed]</span> parts. Claude Code already knows the site's structure, so you don't have to.</p>
+  <h2 class="sec">Prompts for the usual tasks</h2>
+  <p>Copy a prompt. Put it into Claude Code. Fill in the parts in <span class="fill">[brackets]</span>. Claude Code knows the structure of the website. You do not have to know it.</p>
 
   <h3>Add a news item</h3>
   <div class="prompt">
     <div class="prompt-label">Prompt</div>
-    <p class="prompt-text">Add a news item to the website. Date: <span class="fill">[e.g. July 15, 2026]</span>. Text: '<span class="fill">[the announcement, exactly as it should appear]</span>'. Put it at the top of the correct year on the News page, and also add it to the Recent News section on the homepage (keep that list to the 4 newest). Then show me before publishing.</p>
+    <p class="prompt-text">Add a news item to the website. The date is <span class="fill">[for example: July 15, 2026]</span>. The text is: '<span class="fill">[the news, in the exact words]</span>'. Put the item at the top of the correct year on the News page. Put it also in the Recent News list on the home page. Keep the Recent News list to the 4 newest items. Show me the result before you publish.</p>
   </div>
 
   <h3>Add a new lab member</h3>
   <div class="prompt">
     <div class="prompt-label">Prompt</div>
-    <p class="prompt-text">On the People page, add a new current lab member. Name: <span class="fill">[full name]</span>. Role: <span class="fill">[e.g. Graduate Student]</span>. Email: <span class="fill">[address, or 'none']</span>. Bio: '<span class="fill">[paste bio, or 'none']</span>'. Their photo is the file I put in the images/people folder called <span class="fill">[filename]</span>. Add them to the site search too. Show me before publishing.</p>
+    <p class="prompt-text">Add a new current member to the People page. The name is <span class="fill">[full name]</span>. The role is <span class="fill">[for example: Graduate Student]</span>. The email is <span class="fill">[the address, or 'none']</span>. The bio is: '<span class="fill">[the bio, or 'none']</span>'. The photo is the file <span class="fill">[file name]</span> in the images/people folder. Add the member to the site search also. Show me the result before you publish.</p>
   </div>
 
-  <h3>Move someone to "Former" members</h3>
+  <h3>Move a member to the Former list</h3>
   <div class="prompt">
     <div class="prompt-label">Prompt</div>
-    <p class="prompt-text">Move <span class="fill">[name]</span> from Current to Former Laboratory Members on the People page. Their destination is: '<span class="fill">[e.g. Postdoctoral Fellow, Smith Lab, Yale University]</span>'. Update the search entry too.</p>
+    <p class="prompt-text">Move <span class="fill">[name]</span> from Current to Former Laboratory Members on the People page. The destination is: '<span class="fill">[for example: Postdoctoral Fellow, Smith Lab, Yale University]</span>'. Update the search entry also.</p>
   </div>
 
   <h3>Add a publication</h3>
   <div class="prompt">
     <div class="prompt-label">Prompt</div>
-    <p class="prompt-text">Add a publication to the Publications page under <span class="fill">[year, or 'Preprints']</span>. Authors: <span class="fill">[list &mdash; put lab members in bold]</span>. Title: '<span class="fill">[title]</span>'. Journal: '<span class="fill">[journal, volume, pages, year]</span>'. Link: <span class="fill">[DOI or URL]</span>. The PDF is in the pdfs folder as <span class="fill">[filename]</span> (or: no PDF). Add it to the site search too. Show me before publishing.</p>
+    <p class="prompt-text">Add a publication to the Publications page. Put it under <span class="fill">[the year, or 'Preprints']</span>. The authors are <span class="fill">[the list. Make the lab members bold]</span>. The title is: '<span class="fill">[title]</span>'. The journal is: '<span class="fill">[journal, volume, pages, year]</span>'. The link is <span class="fill">[the DOI or the URL]</span>. The PDF is the file <span class="fill">[file name]</span> in the pdfs folder, or there is no PDF. Add it to the site search also. Show me the result before you publish.</p>
   </div>
 
-  <h3>Update Rachel's CV</h3>
-  <p>Save the new CV as <code>Carmody_CV.pdf</code>, put it in the <code>docs</code> folder (replacing the old one &mdash; keep the same filename), then:</p>
+  <h3>Update the CV</h3>
+  <p>Save the new CV with the name <code>Carmody_CV.pdf</code>. Put it in the <code>docs</code> folder. Replace the old file. Keep the same file name. Then use this prompt:</p>
   <div class="prompt">
     <div class="prompt-label">Prompt</div>
-    <p class="prompt-text">Replace the CV on the site with the new Carmody_CV.pdf I put in the docs folder, then publish.</p>
+    <p class="prompt-text">Replace the CV on the website with the new Carmody_CV.pdf in the docs folder. Then publish.</p>
   </div>
 
-  <h3>Fix a typo or reword something</h3>
+  <h3>Correct a mistake in the text</h3>
   <div class="prompt">
     <div class="prompt-label">Prompt</div>
-    <p class="prompt-text">On the <span class="fill">[page name]</span> page, change the text '<span class="fill">[current wording]</span>' to '<span class="fill">[new wording]</span>'.</p>
+    <p class="prompt-text">On the <span class="fill">[page name]</span> page, change the text '<span class="fill">[the current words]</span>' to '<span class="fill">[the new words]</span>'.</p>
   </div>
 </section>
 
 <section class="block">
   <span class="sec-num">Section 05</span>
-  <h2 class="sec">Adding photos &amp; files</h2>
-  <p>Some changes need a file (a photo, a PDF) added first. Two ways:</p>
+  <h2 class="sec">Add a photo or a file</h2>
+  <p>Some changes need a file first: a photo or a PDF. There are 2 methods.</p>
   <ul class="clean">
-    <li><strong>Easiest:</strong> tell Claude Code where the file is and let it move it &mdash; <em>"There's a photo on my Desktop called headshot.jpg &mdash; please add it as the photo for Jane Doe."</em></li>
-    <li><strong>Manual:</strong> drag the file into the right folder yourself, then tell Claude Code it's there:</li>
+    <li><strong>Method 1 (more easy):</strong> Tell Claude Code where the file is. Claude Code moves it. For example: <em>"There is a photo on my Desktop. The name is headshot.jpg. Add it as the photo for Jane Doe."</em></li>
+    <li><strong>Method 2 (manual):</strong> Move the file into the correct folder yourself. Then tell Claude Code that the file is there.</li>
   </ul>
   <div class="table-scroll">
     <table>
-      <thead><tr><th>File type</th><th>Goes in this folder</th></tr></thead>
+      <thead><tr><th>File type</th><th>Put it in this folder</th></tr></thead>
       <tbody>
-        <tr><td>images/people/</td><td>Person headshots (square-ish, at least 600px)</td></tr>
-        <tr><td>pdfs/</td><td>Publication PDFs</td></tr>
-        <tr><td>docs/</td><td>The CV &mdash; name it <code>Carmody_CV.pdf</code></td></tr>
-        <tr><td>images/</td><td>Homepage slideshow images</td></tr>
+        <tr><td>images/people/</td><td>Photos of members (square, 600px or more)</td></tr>
+        <tr><td>pdfs/</td><td>PDFs of publications</td></tr>
+        <tr><td>docs/</td><td>The CV. Give it the name <code>Carmody_CV.pdf</code></td></tr>
+        <tr><td>images/</td><td>Images for the home-page slideshow</td></tr>
       </tbody>
     </table>
   </div>
@@ -128,46 +128,46 @@
 
 <section class="block">
   <span class="sec-num">Section 06</span>
-  <h2 class="sec">Where everything lives</h2>
-  <p>You don't need this to make edits &mdash; Claude Code knows it &mdash; but it's handy context.</p>
+  <h2 class="sec">The files of the website</h2>
+  <p>You do not need this list to make a change. Claude Code knows the files. But the list can help you.</p>
   <div class="table-scroll">
     <table>
       <thead><tr><th>File</th><th>What it is</th></tr></thead>
       <tbody>
-        <tr><td>index.html</td><td>Homepage</td></tr>
-        <tr><td>about.html</td><td>About / mission</td></tr>
-        <tr><td>research.html</td><td>Research themes</td></tr>
-        <tr><td>people.html</td><td>People</td></tr>
-        <tr><td>publications.html</td><td>Publications</td></tr>
-        <tr><td>laboratory.html</td><td>"Our Space" / facilities</td></tr>
-        <tr><td>news.html</td><td>News</td></tr>
-        <tr><td>contact.html</td><td>Contact</td></tr>
+        <tr><td>index.html</td><td>Home page</td></tr>
+        <tr><td>about.html</td><td>About page</td></tr>
+        <tr><td>research.html</td><td>Research page</td></tr>
+        <tr><td>people.html</td><td>People page</td></tr>
+        <tr><td>publications.html</td><td>Publications page</td></tr>
+        <tr><td>laboratory.html</td><td>Our Space page</td></tr>
+        <tr><td>news.html</td><td>News page</td></tr>
+        <tr><td>contact.html</td><td>Contact page</td></tr>
         <tr><td>js/main.js</td><td>Menu, footer, search box, slideshow</td></tr>
-        <tr><td>css/styles.css</td><td>Colors, fonts, spacing</td></tr>
+        <tr><td>css/styles.css</td><td>Colors, fonts, spaces</td></tr>
       </tbody>
     </table>
   </div>
-  <div class="callout warn"><span class="ic">!</span><p>Two things to know: the <strong>menu and footer</strong> are defined once in <code>js/main.js</code> and appear on every page. And the <strong>search box has its own list</strong> &mdash; when you add a person, publication, or news item, that list needs updating too. The recipes above already tell Claude Code to do this, so just don't forget to mention it.</p></div>
+  <div class="callout warn"><span class="ic">!</span><p>2 facts are important. First, the menu and the footer are in the file <code>js/main.js</code>. They show on each page. Second, the site search has its own list. When you add a member, a publication, or a news item, Claude Code must update this list also. The prompts in Section 04 tell Claude Code to do this.</p></div>
 </section>
 
 <section class="block">
   <span class="sec-num">Section 07</span>
-  <h2 class="sec">If something goes wrong</h2>
-  <p>Nothing here is permanent &mdash; GitHub keeps a full history, so any change can be undone.</p>
-  <h3>A change looks wrong on the live site</h3>
-  <div class="prompt"><div class="prompt-label">Prompt</div><p class="prompt-text">Undo the last change and publish the fix.</p></div>
-  <h3>You want to go back to how the site was before today</h3>
-  <div class="prompt"><div class="prompt-label">Prompt</div><p class="prompt-text">Please revert the site to the last commit from before today's changes and push it.</p></div>
-  <h3>The site didn't update after ~5 minutes</h3>
-  <p>First do a hard refresh (<strong>Cmd+Shift+R</strong> / <strong>Ctrl+F5</strong>). If it's still stale:</p>
-  <div class="prompt"><div class="prompt-label">Prompt</div><p class="prompt-text">Did my last change actually get pushed to GitHub? Please check and push it if not.</p></div>
-  <h3>Claude Code seems confused, or you're unsure</h3>
-  <div class="prompt"><div class="prompt-label">Prompt</div><p class="prompt-text">Explain in simple terms what you're about to change, and don't publish anything yet.</p></div>
-  <div class="callout tip"><span class="ic">&#10022;</span><p><strong>Truly stuck?</strong> Email Christopher Rua&ntilde;o at <strong>chris@linklane.ai</strong>, or the department's computing support. Because every change is in GitHub's history, a good version can always be restored.</p></div>
+  <h2 class="sec">Solve a problem</h2>
+  <p>No change is permanent. GitHub keeps a record of each change. You can undo each change.</p>
+  <h3>A change is wrong on the website</h3>
+  <div class="prompt"><div class="prompt-label">Prompt</div><p class="prompt-text">Undo the last change. Then publish the correction.</p></div>
+  <h3>You want the website as it was before today</h3>
+  <div class="prompt"><div class="prompt-label">Prompt</div><p class="prompt-text">Change the website back to the version from before today. Then publish it.</p></div>
+  <h3>The website does not change after 5 minutes</h3>
+  <p>First, refresh the page. On a Mac, push Cmd+Shift+R. On Windows, push Ctrl+F5. If the website is still not correct, use this prompt:</p>
+  <div class="prompt"><div class="prompt-label">Prompt</div><p class="prompt-text">Did my last change go to GitHub? Check it. If not, publish it.</p></div>
+  <h3>Claude Code is not clear, or you are not sure</h3>
+  <div class="prompt"><div class="prompt-label">Prompt</div><p class="prompt-text">Tell me in simple words what you will change. Do not publish yet.</p></div>
+  <div class="callout tip"><span class="ic">&#10022;</span><p>Do you have a problem that you cannot solve? Send an email to Christopher Rua&ntilde;o at <strong>chris@linklane.ai</strong>. Or ask the IT team. GitHub keeps a record of each change. A good version is always available.</p></div>
 </section>
 
 <footer class="foot">
-  Carmody Laboratory &middot; Nutritional &amp; Microbial Ecology &middot; Harvard Department of Human Evolutionary Biology. Prepared July 2026.
+  Carmody Laboratory &middot; Nutritional &amp; Microbial Ecology &middot; Harvard Department of Human Evolutionary Biology. Date: July 2026.
 </footer>
 
 </body>

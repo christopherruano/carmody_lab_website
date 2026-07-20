@@ -1,27 +1,31 @@
 # Carmody Lab Website
 
-Source for **https://nme.fas.harvard.edu** — the Nutritional & Microbial Ecology
-Laboratory (Harvard, Department of Human Evolutionary Biology).
+This is the source for **https://nme.fas.harvard.edu**, the website of the
+Nutritional & Microbial Ecology Laboratory (Harvard, Department of Human
+Evolutionary Biology).
 
-Static site (plain HTML/CSS/JS, no build step) hosted on **GitHub Pages** from the
-`main` branch. Pushing to `main` publishes to the live site automatically in about a
-minute.
+This is a static website (HTML, CSS, and JS, with no build step). GitHub Pages hosts
+it from the `main` branch. A push to `main` publishes the website automatically in
+about 1 minute.
+
+*The documentation follows ASD-STE100 Simplified Technical English.*
 
 ## Where to start
 
-- **Keeping the site up to date (non-technical guide):** [`Maintenance-Guide.pdf`](Maintenance-Guide.pdf)
-- **Editing with an AI assistant (Claude Code):** [`CLAUDE.md`](CLAUDE.md) — loaded
-  automatically; explains the structure and the pieces that must stay in sync.
-- **Ownership / handoff notes:** [`Handoff-Notes.pdf`](Handoff-Notes.pdf)
+- **To update the website (guide for a non-technical person):** [`Maintenance-Guide.pdf`](Maintenance-Guide.pdf)
+- **To edit with an AI assistant (Claude Code):** [`CLAUDE.md`](CLAUDE.md). Claude
+  Code reads it automatically. It gives the structure and the files that you must
+  keep in sync.
+- **For the handoff and access notes:** [`Handoff-Notes.pdf`](Handoff-Notes.pdf)
 
-The two PDF guides are generated from the editable source in [`guide-src/`](guide-src/)
-(`maintenance.html`, `handoff.html`, `guide.css`) — see `CLAUDE.md` for how to
-regenerate them after an edit.
+A tool makes the 2 PDF guides from the source in [`guide-src/`](guide-src/)
+(`maintenance.html`, `handoff.html`, and `guide.css`). Refer to `CLAUDE.md` for the
+steps to make the PDFs again after an edit.
 
-## Structure at a glance
+## The structure
 
-- `*.html` — one file per page (home, about, research, people, publications,
-  laboratory, news, contact)
-- `js/main.js` — shared nav, footer, search, and homepage slideshow
-- `css/styles.css` — all styling
-- `images/`, `pdfs/`, `docs/` — assets, publication PDFs, and the CV
+- `*.html` — one file for each page (home, about, research, people, publications,
+  laboratory, news, contact).
+- `js/main.js` — the shared nav, footer, search, and home-page slideshow.
+- `css/styles.css` — all the styles.
+- `images/`, `pdfs/`, `docs/` — the images, the publication PDFs, and the CV.
