@@ -63,11 +63,39 @@ if (bio && bio.toLowerCase() !== 'none') {
 lines.push('        </div>');
 const card = lines.join('\n') + '\n\n';
 
-// --- insert at the end of the current-members grid ---
+// --- insert into the current-members grid, ordered by seniority ---
+// The Current grid is ordered by role. Lower rank = more senior = higher up.
+// A new person goes after the last person of the same rank, before the first
+// person of a more-junior rank. Unknown roles go to the end.
+function rankOf(roleText) {
+  const r = roleText.toLowerCase();
+  if (r.includes('principal investigator') || r.includes('professor')) return 0;
+  if (r.includes('lecturer')) return 1;
+  if (r.includes('postdoc')) return 2;
+  if (r.includes('graduate') && !r.includes('undergraduate')) return 3;
+  if (r.includes('undergraduate')) return 4;
+  if (r.includes('associate researcher') || r.includes('associate')) return 5;
+  return 6;
+}
+const newRank = rankOf(role);
+
 let people = read(p('people.html'));
 const gridClose = `      </div>\n    </div>\n  </section>\n\n  <section class="section section-alt">`;
-if (!people.includes(gridClose)) fail('Could not find the Current Laboratory Members grid in people.html.');
-people = people.replace(gridClose, card + gridClose);
+const gridCloseIdx = people.indexOf(gridClose);
+if (gridCloseIdx === -1) fail('Could not find the Current Laboratory Members grid in people.html.');
+const currentStart = people.indexOf('Current Laboratory Members');
+
+const cardRe = / {8}<div class="person-card"[^>]*>[\s\S]*?\n {8}<\/div>\n/g;
+let insertAt = gridCloseIdx; // default: end of the current grid
+let m;
+while ((m = cardRe.exec(people)) !== null) {
+  if (m.index < currentStart) continue;   // before the Current section
+  if (m.index >= gridCloseIdx) break;     // reached the Former section
+  const roleMatch = m[0].match(/<div class="person-role">([\s\S]*?)<\/div>/);
+  const existingRank = roleMatch ? rankOf(roleMatch[1]) : 6;
+  if (existingRank > newRank) { insertAt = m.index; break; }
+}
+people = people.slice(0, insertAt) + card + people.slice(insertAt);
 write(p('people.html'), people);
 
 // --- searchIndex entry ---

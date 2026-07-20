@@ -73,6 +73,11 @@ change one place, change the other place in the **same** edit.
   `.person-role`. Add `.person-role-former` or `.person-destination` if you need it.
   Current members are in the first section. Former members are in the second section,
   each with a `.person-destination`.
+- **Order the Current members by seniority** (most senior first): Principal
+  Investigator / Professor, then Lecturer, then Postdoctoral Fellow, then Graduate
+  Student, then Undergraduate Researcher, then Associate Researcher. A new member
+  goes after the last person of the same role, before the first more-junior person.
+  `scripts/add-person.mjs` does this automatically; keep the same order by hand.
 - News: use `<h2 class="news-year-header">YEAR</h2>`, with the newest item first.
   Each item is a `.news-item` with a `.news-date` and a `.news-text`.
 - Put photos of members in `images/people/` (square, 600px or more). Put PDFs of
