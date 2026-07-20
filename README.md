@@ -9,10 +9,14 @@ minute.
 
 ## Where to start
 
-- **Keeping the site up to date (non-technical guide):** [`MAINTENANCE.md`](MAINTENANCE.md)
+- **Keeping the site up to date (non-technical guide):** [`Maintenance-Guide.pdf`](Maintenance-Guide.pdf)
 - **Editing with an AI assistant (Claude Code):** [`CLAUDE.md`](CLAUDE.md) — loaded
   automatically; explains the structure and the pieces that must stay in sync.
-- **Ownership / handoff notes:** [`HANDOFF.md`](HANDOFF.md)
+- **Ownership / handoff notes:** [`Handoff-Notes.pdf`](Handoff-Notes.pdf)
+
+The two PDF guides are generated from the editable source in [`guide-src/`](guide-src/)
+(`maintenance.html`, `handoff.html`, `guide.css`) — see `CLAUDE.md` for how to
+regenerate them after an edit.
 
 ## Structure at a glance
 

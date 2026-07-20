@@ -2,8 +2,8 @@
 
 This file is loaded automatically by Claude Code. Read it before editing. It exists
 so that edits stay correct and consistent even when made by someone non-technical.
-The human-facing walkthrough is in `MAINTENANCE.md`; keep that guide accurate if you
-change how the site works.
+The human-facing walkthrough is `Maintenance-Guide.pdf` (and `Handoff-Notes.pdf`);
+keep those accurate if you change how the site works — see "Regenerating the guides."
 
 ## What this is
 The public website for the Carmody Lab (Nutritional & Microbial Ecology Laboratory,
@@ -87,4 +87,23 @@ accessibility policy link in the footer. Don't remove these when editing.
   within ~1 minute.
 - To undo: `git revert` or reset to a prior commit and push — every change is in the
   git history, so nothing is unrecoverable.
-- Keep this file and `MAINTENANCE.md` accurate when the structure changes.
+- Keep this file, `Maintenance-Guide.pdf`, and `Handoff-Notes.pdf` accurate when the
+  structure changes.
+
+## Regenerating the guides
+`Maintenance-Guide.pdf` and `Handoff-Notes.pdf` are the reader-facing handoff docs.
+They are **generated**, not hand-edited — the editable source is in `guide-src/`
+(`maintenance.html`, `handoff.html`, share `guide.css`). To change a guide, edit the
+HTML/CSS there, then re-render with headless Chrome:
+
+```
+cd guide-src
+CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+"$CHROME" --headless --disable-gpu --no-pdf-header-footer \
+  --print-to-pdf="../Maintenance-Guide.pdf" "file://$PWD/maintenance.html"
+"$CHROME" --headless --disable-gpu --no-pdf-header-footer \
+  --print-to-pdf="../Handoff-Notes.pdf" "file://$PWD/handoff.html"
+```
+
+The guides are print/light-theme only by design (they're meant to be read and
+printed on white).

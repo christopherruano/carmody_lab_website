@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Carmody Lab Website — Handoff Notes</title>
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+
+<div class="masthead">
+  <p class="eyebrow">Carmody Laboratory &middot; Internal</p>
+  <h1 class="title">Website Handoff Notes</h1>
+  <p class="lede">The technical facts and decisions behind handing off <strong>nme.fas.harvard.edu</strong>. Companion to the Maintenance Guide.</p>
+  <div class="meta-row">
+    <span>Repository: <strong>github.com/christopherruano/carmody_lab_website</strong></span>
+    <span>Prepared July 2026</span>
+  </div>
+</div>
+
+<section class="block">
+  <span class="sec-num">Handoff</span>
+  <h2 class="sec">Site facts (the ground truth)</h2>
+  <ul class="clean">
+    <li><strong>Type:</strong> static site &mdash; plain HTML/CSS/JS. No build step, no framework, no server. This is deliberate: it's why a non-technical PI can maintain it.</li>
+    <li><strong>Repository:</strong> <code>github.com/christopherruano/carmody_lab_website</code> (Chris's personal account).</li>
+    <li><strong>Hosting:</strong> GitHub Pages, served from the <code>main</code> branch, repository root.</li>
+    <li><strong>Live URL:</strong> <code>nme.fas.harvard.edu</code>, set by the <code>CNAME</code> file plus a Harvard FAS DNS record.</li>
+    <li><strong>Deploy:</strong> push to <code>main</code> &rarr; GitHub Pages rebuilds automatically (~1 min). No manual publish step.</li>
+  </ul>
+</section>
+
+<section class="block">
+  <span class="sec-num">Handoff</span>
+  <h2 class="sec">The one architectural gotcha</h2>
+  <p><code>js/main.js</code> is the shared brain of the site. It injects the <strong>nav and footer</strong> into every page, and also holds the <strong>search index</strong> (hand-maintained), the <strong>slideshow captions</strong>, and the research-tab / load-more behavior.</p>
+  <div class="callout warn"><span class="ic">!</span><p>Nav, footer, and search are centralized here &mdash; not per-page. Any editor (human or AI) needs to know this. It's documented in <code>CLAUDE.md</code>, which Claude Code loads automatically.</p></div>
+</section>
+
+<section class="block">
+  <span class="sec-num">Handoff</span>
+  <h2 class="sec">Access &mdash; chosen approach</h2>
+  <div class="callout tip"><span class="ic">&#10022;</span><p><strong>Decision: add Rachel as an Admin.</strong> The repo stays on Chris's account; Rachel gets full control without touching hosting or DNS.</p></div>
+  <p>On <code>github.com/christopherruano/carmody_lab_website</code> &rarr; <strong>Settings &rarr; Collaborators and teams &rarr; Add people</strong> &rarr; add Rachel with the <strong>Admin</strong> role. Add one backup lab member as Admin too, so access never rests on a single person.</p>
+  <p>A full ownership transfer was considered and declined &mdash; it would have required a coordinated DNS change with Harvard FAS. Revisit only if Chris's account is ever closed. The Claude/Anthropic account Rachel uses for Claude Code is separate from GitHub and should be her own.</p>
+</section>
+
+<section class="block">
+  <span class="sec-num">Handoff</span>
+  <h2 class="sec">Handoff checklist</h2>
+  <ul class="check">
+    <li>Add Rachel (+ one backup) as <strong>Admin</strong> collaborators on the repo.</li>
+    <li>Confirm GitHub Pages is green (Settings &rarr; Pages; custom domain reads <code>nme.fas.harvard.edu</code>, HTTPS enforced).</li>
+    <li>Clone the repo fresh onto Rachel's / the lab machine.</li>
+    <li>Install Claude Code there; sign in with a lab-owned Claude account; confirm <code>claude</code> launches in the repo folder.</li>
+    <li>Do one <strong>live test edit together</strong> end-to-end (add a dummy news item, publish, see it, then remove it). The most valuable part of the handoff.</li>
+    <li>Record the Harvard FAS / HEB IT contact for any future DNS issues.</li>
+  </ul>
+</section>
+
+<section class="block">
+  <span class="sec-num">Handoff</span>
+  <h2 class="sec">Reference docs in the repo</h2>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>README.md</td><td>Front door &mdash; points to the guides</td></tr>
+        <tr><td>Maintenance&#8209;Guide.pdf</td><td>Non-technical maintenance guide (for Rachel)</td></tr>
+        <tr><td>CLAUDE.md</td><td>Auto-loaded project guide for AI assistants</td></tr>
+        <tr><td>Handoff&#8209;Notes.pdf</td><td>This document</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>What Rachel can do alone: everything in the maintenance guide (all reversible via git history). What should involve a technical helper: changing the domain / <code>CNAME</code>, restructuring layout or CSS, or touching GitHub Pages / DNS settings.</p>
+</section>
+
+<footer class="foot">
+  Carmody Laboratory &middot; Nutritional &amp; Microbial Ecology &middot; Harvard Department of Human Evolutionary Biology. Prepared July 2026.
+</footer>
+
+</body>
+</html>
