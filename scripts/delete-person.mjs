@@ -31,10 +31,11 @@ write(p('people.html'), people);
 
 // --- remove the searchIndex entry ---
 let main = read(p('js', 'main.js'));
-const entryRe = /^ {4}\{ page: 'People', url: 'people\.html', title: '([^']*)',[\s\S]*?\},\n/gm;
+const entryRe = /^ {4}\{ page: 'People', url: 'people\.html', title: '((?:\\.|[^'\\])*)',[\s\S]*?\},\n/gm;
 let removed = false;
 main = main.replace(entryRe, (line, title) => {
-  if (!removed && toPlain(title).includes(needlePlain)) {
+  const plainTitle = toPlain(title.replace(/\\(['\\])/g, '$1')); // unescape \' and \\
+  if (!removed && plainTitle.includes(needlePlain)) {
     removed = true;
     return '';
   }
