@@ -10,7 +10,7 @@
 <div class="masthead">
   <p class="eyebrow">Carmody Laboratory &middot; Harvard University</p>
   <h1 class="title">Website Maintenance Guide</h1>
-  <p class="lede">This guide tells you how to update the website <strong>nme.fas.harvard.edu</strong>. You do not have to write code.</p>
+  <p class="lede">This guide tells you how to update the website <strong>nme.fas.harvard.edu</strong>. You do not have to write code. Find your task, copy the prompt, and paste it into Claude Code.</p>
   <div class="meta-row">
     <span>Website: <strong>nme.fas.harvard.edu</strong></span>
     <span>Made by Christopher Rua&ntilde;o</span>
@@ -28,7 +28,7 @@
     <li>When you publish a change, the website shows the change in about 1 minute. There is no publish button. There is no server to log in to.</li>
     <li><strong>Claude Code</strong> is an assistant on your computer. You use a chat window to give instructions to Claude Code.</li>
   </ul>
-  <div class="callout tip"><span class="ic">&#10022;</span><p>You cannot break the website permanently. GitHub keeps each change in its record. You can undo each change. Refer to Section 07.</p></div>
+  <div class="callout tip"><span class="ic">&#10022;</span><p>You cannot break the website permanently. GitHub keeps each change in its record. You can undo each change. Refer to Section 09.</p></div>
 </section>
 
 <section class="block">
@@ -52,8 +52,8 @@
   <p>Each change has the same 3 steps:</p>
   <ol class="steps">
     <li><strong>Tell Claude Code what to change.</strong> Write in usual English. Give the names, the dates, and the exact words.</li>
-    <li><strong>Let Claude Code make the change.</strong> Then ask Claude Code to show you the result.</li>
-    <li><strong>Tell Claude Code to publish the change.</strong> Use the prompt below. The website shows the change in about 1 minute.</li>
+    <li><strong>Look at the result.</strong> Ask Claude Code to show you the change. Read it.</li>
+    <li><strong>Publish the change.</strong> Use the prompt below. The website shows the change in about 1 minute.</li>
   </ol>
   <div class="prompt">
     <div class="prompt-label">Prompt to publish</div>
@@ -64,44 +64,130 @@
 
 <section class="block">
   <span class="sec-num">Section 04</span>
-  <h2 class="sec">Prompts for the usual tasks</h2>
-  <p>Copy a prompt. Put it into Claude Code. Fill in the parts in <span class="fill">[brackets]</span>. Claude Code knows the structure of the website. You do not have to know it.</p>
+  <h2 class="sec">Prompts for each change</h2>
+  <p>Find your task below. Copy the prompt. Fill in the parts in <span class="fill">[brackets]</span>. Paste it into Claude Code. Each prompt ends with "Show me the result." Read the result, then publish.</p>
 
-  <h3>Add a news item</h3>
+  <h3 class="group-head">News</h3>
+
+  <p class="task">Add a news item</p>
   <div class="prompt">
     <div class="prompt-label">Prompt</div>
-    <p class="prompt-text">Add a news item to the website. The date is <span class="fill">[for example: July 15, 2026]</span>. The text is: '<span class="fill">[the news, in the exact words]</span>'. Put the item at the top of the correct year on the News page. Put it also in the Recent News list on the home page. Keep the Recent News list to the 4 newest items. Show me the result before you publish.</p>
+    <p class="prompt-text">Add a news item. The date is <span class="fill">[for example: July 15, 2026]</span>. The text is: '<span class="fill">[the news, in the exact words]</span>'. Put it at the top of the correct year on the News page. Put it also at the top of the Recent News list on the home page. Keep the Recent News list to the 4 newest items. Add it to the site search. Show me the result.</p>
   </div>
 
-  <h3>Add a new lab member</h3>
+  <p class="task">Correct a news item</p>
   <div class="prompt">
     <div class="prompt-label">Prompt</div>
-    <p class="prompt-text">Add a new current member to the People page. The name is <span class="fill">[full name]</span>. The role is <span class="fill">[for example: Graduate Student]</span>. The email is <span class="fill">[the address, or 'none']</span>. The bio is: '<span class="fill">[the bio, or 'none']</span>'. The photo is the file <span class="fill">[file name]</span> in the images/people folder. Add the member to the site search also. Show me the result before you publish.</p>
+    <p class="prompt-text">On the News page, find the item that says '<span class="fill">[some words from the item]</span>'. Change it to: '<span class="fill">[the correct words]</span>'. Change the same item on the home page and in the site search. Show me the result.</p>
   </div>
 
-  <h3>Move a member to the Former list</h3>
+  <p class="task">Remove a news item</p>
   <div class="prompt">
     <div class="prompt-label">Prompt</div>
-    <p class="prompt-text">Move <span class="fill">[name]</span> from Current to Former Laboratory Members on the People page. The destination is: '<span class="fill">[for example: Postdoctoral Fellow, Smith Lab, Yale University]</span>'. Update the search entry also.</p>
+    <p class="prompt-text">Remove the news item that says '<span class="fill">[some words from the item]</span>' from the News page, the home page, and the site search. Show me the result.</p>
   </div>
 
-  <h3>Add a publication</h3>
+  <h3 class="group-head">People</h3>
+
+  <p class="task">Add a current member</p>
   <div class="prompt">
     <div class="prompt-label">Prompt</div>
-    <p class="prompt-text">Add a publication to the Publications page. Put it under <span class="fill">[the year, or 'Preprints']</span>. The authors are <span class="fill">[the list. Make the lab members bold]</span>. The title is: '<span class="fill">[title]</span>'. The journal is: '<span class="fill">[journal, volume, pages, year]</span>'. The link is <span class="fill">[the DOI or the URL]</span>. The PDF is the file <span class="fill">[file name]</span> in the pdfs folder, or there is no PDF. Add it to the site search also. Show me the result before you publish.</p>
+    <p class="prompt-text">Add a new current member to the People page. The name is <span class="fill">[full name]</span>. The role is <span class="fill">[for example: Graduate Student]</span>. The email is <span class="fill">[the address, or 'none']</span>. The bio is: '<span class="fill">[the bio, or 'none']</span>'. The photo is the file <span class="fill">[file name]</span> in the images/people folder. Add the member to the site search. Show me the result.</p>
   </div>
 
-  <h3>Update the CV</h3>
+  <p class="task">Change a member's role, email, or bio</p>
+  <div class="prompt">
+    <div class="prompt-label">Prompt</div>
+    <p class="prompt-text">On the People page, find <span class="fill">[name]</span>. Change the <span class="fill">[role / email / bio]</span> to: '<span class="fill">[the new text]</span>'. Update the site search also. Show me the result.</p>
+  </div>
+
+  <p class="task">Change a member's photo</p>
+  <div class="prompt">
+    <div class="prompt-label">Prompt</div>
+    <p class="prompt-text">Change the photo for <span class="fill">[name]</span> on the People page. The new photo is the file <span class="fill">[file name]</span> in the images/people folder. Show me the result.</p>
+  </div>
+
+  <p class="task">Move a member to the Former list</p>
+  <div class="prompt">
+    <div class="prompt-label">Prompt</div>
+    <p class="prompt-text">Move <span class="fill">[name]</span> from Current to Former Laboratory Members on the People page. The destination is: '<span class="fill">[for example: Postdoctoral Fellow, Smith Lab, Yale University]</span>'. Update the site search also. Show me the result.</p>
+  </div>
+
+  <p class="task">Remove a member</p>
+  <div class="prompt">
+    <div class="prompt-label">Prompt</div>
+    <p class="prompt-text">Remove <span class="fill">[name]</span> from the People page and the site search. Show me the result.</p>
+  </div>
+
+  <h3 class="group-head">Publications</h3>
+
+  <p class="task">Add a publication</p>
+  <div class="prompt">
+    <div class="prompt-label">Prompt</div>
+    <p class="prompt-text">Add a publication to the Publications page. Put it under <span class="fill">[the year, or 'Preprints']</span>. The authors are <span class="fill">[the list. Make the lab members bold]</span>. The title is: '<span class="fill">[title]</span>'. The journal is: '<span class="fill">[journal, volume, pages, year]</span>'. The link is <span class="fill">[the DOI or the URL]</span>. The PDF is the file <span class="fill">[file name]</span> in the pdfs folder, or there is no PDF. Add it to the site search. Show me the result.</p>
+  </div>
+
+  <p class="task">Correct a publication</p>
+  <div class="prompt">
+    <div class="prompt-label">Prompt</div>
+    <p class="prompt-text">On the Publications page, find the publication with the title '<span class="fill">[some words from the title]</span>'. Change the <span class="fill">[authors / title / journal / link]</span> to: '<span class="fill">[the correct text]</span>'. Show me the result.</p>
+  </div>
+
+  <h3 class="group-head">The CV</h3>
+
+  <p class="task">Replace the CV</p>
   <p>Save the new CV with the name <code>Carmody_CV.pdf</code>. Put it in the <code>docs</code> folder. Replace the old file. Keep the same file name. Then use this prompt:</p>
   <div class="prompt">
     <div class="prompt-label">Prompt</div>
     <p class="prompt-text">Replace the CV on the website with the new Carmody_CV.pdf in the docs folder. Then publish.</p>
   </div>
 
-  <h3>Correct a mistake in the text</h3>
+  <h3 class="group-head">Home page and slideshow</h3>
+
+  <p class="task">Change the welcome text on the home page</p>
   <div class="prompt">
     <div class="prompt-label">Prompt</div>
-    <p class="prompt-text">On the <span class="fill">[page name]</span> page, change the text '<span class="fill">[the current words]</span>' to '<span class="fill">[the new words]</span>'.</p>
+    <p class="prompt-text">On the home page, change the main welcome text to: '<span class="fill">[the new text]</span>'. Show me the result.</p>
+  </div>
+
+  <p class="task">Change a slideshow caption</p>
+  <div class="prompt">
+    <div class="prompt-label">Prompt</div>
+    <p class="prompt-text">On the home-page slideshow, change the caption for slide <span class="fill">[number]</span>. The finding is: '<span class="fill">[the new finding]</span>'. The citation is: '<span class="fill">[the new citation]</span>'. Show me the result.</p>
+  </div>
+
+  <p class="task">Replace a slideshow image</p>
+  <div class="prompt">
+    <div class="prompt-label">Prompt</div>
+    <p class="prompt-text">Replace the image for slide <span class="fill">[number]</span> in the home-page slideshow. The new image is the file <span class="fill">[file name]</span> in the images folder. Show me the result.</p>
+  </div>
+
+  <h3 class="group-head">Other pages</h3>
+
+  <p class="task">Change text on the Research page or the Our Space page</p>
+  <div class="prompt">
+    <div class="prompt-label">Prompt</div>
+    <p class="prompt-text">On the <span class="fill">[Research / Our Space]</span> page, change the text '<span class="fill">[the current words]</span>' to '<span class="fill">[the new words]</span>'. Show me the result.</p>
+  </div>
+
+  <p class="task">Change a contact email, a phone number, or the address</p>
+  <div class="prompt">
+    <div class="prompt-label">Prompt</div>
+    <p class="prompt-text">Change the <span class="fill">[email / phone number / address]</span> from '<span class="fill">[the current value]</span>' to '<span class="fill">[the new value]</span>'. Change it on the Contact page and in the footer at the bottom of each page. Show me the result.</p>
+  </div>
+
+  <h3 class="group-head">Any page</h3>
+
+  <p class="task">Change any text</p>
+  <div class="prompt">
+    <div class="prompt-label">Prompt</div>
+    <p class="prompt-text">On the <span class="fill">[page name]</span> page, change the text '<span class="fill">[the current words]</span>' to '<span class="fill">[the new words]</span>'. Show me the result.</p>
+  </div>
+
+  <p class="task">Change or correct a link</p>
+  <div class="prompt">
+    <div class="prompt-label">Prompt</div>
+    <p class="prompt-text">On the <span class="fill">[page name]</span> page, find the link '<span class="fill">[the link words]</span>'. Change its address to <span class="fill">[the new URL]</span>. Show me the result.</p>
   </div>
 </section>
 
@@ -128,6 +214,49 @@
 
 <section class="block">
   <span class="sec-num">Section 06</span>
+  <h2 class="sec">Get the best result from Claude Code</h2>
+  <p>These rules help you get a good result each time:</p>
+  <ul class="clean">
+    <li><strong>Give the exact words.</strong> Put the exact text in quotation marks. Claude Code uses the words that you give.</li>
+    <li><strong>Change one thing at a time.</strong> One clear request is better than a long list.</li>
+    <li><strong>Look before you publish.</strong> Say: <em>"Show me the result first."</em></li>
+    <li><strong>Correct it in plain words.</strong> If the result is wrong, say what is wrong. For example: <em>"The date is wrong. Change it to May 3, 2026."</em></li>
+    <li><strong>You do not need technical words.</strong> Describe what you see. For example: <em>"The photo of John looks stretched. Please make it look correct."</em></li>
+    <li><strong>To stop, say so.</strong> Say: <em>"Do not publish. Undo that change."</em></li>
+  </ul>
+</section>
+
+<section class="block">
+  <span class="sec-num">Section 07</span>
+  <h2 class="sec">Other tasks Claude Code can do</h2>
+  <p>Claude Code can do more than the tasks above. Here are some examples.</p>
+
+  <p class="task">Check the website for problems</p>
+  <div class="prompt">
+    <div class="prompt-label">Prompt</div>
+    <p class="prompt-text">Check the whole website. Find broken links, spelling mistakes, and images that do not load. Make a list of what you find. Do not change anything yet.</p>
+  </div>
+
+  <p class="task">Get an explanation</p>
+  <div class="prompt">
+    <div class="prompt-label">Prompt</div>
+    <p class="prompt-text">In simple words, tell me what the <span class="fill">[page or file name]</span> does. Do not change anything.</p>
+  </div>
+
+  <p class="task">See the recent changes</p>
+  <div class="prompt">
+    <div class="prompt-label">Prompt</div>
+    <p class="prompt-text">Show me a list of the changes to the website from the last month.</p>
+  </div>
+
+  <p class="task">Ask a question</p>
+  <p>You can ask Claude Code a question in plain words. For example: <em>"How do I add a new page to the website?"</em> Claude Code answers the question. It can also do the task for you.</p>
+
+  <div class="callout tip"><span class="ic">&#10022;</span><p><strong>Codex.</strong> Codex is a similar tool from OpenAI. It works the same way: you start it in the website folder, you type your request in plain English, and it edits the files. The prompts in this guide work with Claude Code and with Codex. Use the tool that Chris or the IT team sets up for you.</p></div>
+</section>
+
+<section class="block">
+  <span class="sec-num">Section 08</span>
   <h2 class="sec">The files of the website</h2>
   <p>You do not need this list to make a change. Claude Code knows the files. But the list can help you.</p>
   <div class="table-scroll">
@@ -151,7 +280,7 @@
 </section>
 
 <section class="block">
-  <span class="sec-num">Section 07</span>
+  <span class="sec-num">Section 09</span>
   <h2 class="sec">Solve a problem</h2>
   <p>No change is permanent. GitHub keeps a record of each change. You can undo each change.</p>
   <h3>A change is wrong on the website</h3>
