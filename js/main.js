@@ -362,6 +362,7 @@
     { page: 'Contact', url: 'contact.html', title: 'Location', text: 'Department of Human Evolutionary Biology. Peabody Museum, 11 Divinity Avenue, 5th Floor. Cambridge, Massachusetts 02138.' },
 
     // News (selected highlights)
+    { page: 'News', url: 'news.html', title: 'August 1, 2026', text: 'Automated test of the content bot. This will not be published.' },
     { page: 'News', url: 'news.html', title: 'Amar Sarkar - Bok Award (2025)', text: 'Congratulations to Amar Sarkar on winning a 2025 Derek C. Bok Award for Excellence in Graduate Student Teaching of Undergraduates.' },
     { page: 'News', url: 'news.html', title: 'Ludovico Rollo - Hoopes Prize (2025)', text: 'Congratulations to undergraduate researcher Ludovico Rollo for winning a 2025 Hoopes Prize for his senior thesis, The Influence of Social Dominance on the Gut Microbiome.' },
     { page: 'News', url: 'news.html', title: 'Neil Ibata - London Marathon (2025)', text: 'Congratulations to postdoc Neil Ibata on running a blistering 2:19:01 in the London Marathon!' },
