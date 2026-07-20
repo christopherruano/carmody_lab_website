@@ -44,16 +44,96 @@
     <li><strong>Change text on a page</strong></li>
   </ul>
 
-  <h3>How to use a form</h3>
-  <ol class="steps">
-    <li>Go to the website page on GitHub: <code>github.com/christopherruano/carmody_lab_website</code>.</li>
-    <li>Click the <strong>Issues</strong> tab. Then click the green <strong>New issue</strong> button.</li>
-    <li>Choose the form for your task. For example, <strong>Add a news item</strong>.</li>
-    <li>Fill in the fields. To add a photo, drag it into the Photo box. Then click <strong>Submit new issue</strong>.</li>
-    <li>Wait about 1 minute. The website adds a comment with a link to a <strong>pull request</strong>. A pull request is a change that waits for your approval.</li>
-    <li>Open the pull request. Look at the change.</li>
-    <li>Click the green <strong>Merge pull request</strong> button to publish. The website shows the change about 1 minute later.</li>
-  </ol>
+  <h3>How to use a form, step by step</h3>
+  <p>The orange box shows where to click on each screen.</p>
+
+  <div class="walk">
+
+    <div class="wstep">
+      <div class="wnum">1</div>
+      <div class="wbody">
+        <p class="wcap">Go to the website page on GitHub. Click the <strong>Issues</strong> tab.</p>
+        <div class="shot">
+          <div class="shot-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="urlpill">github.com/christopherruano/carmody_lab_website</span></div>
+          <div class="shot-body">
+            <div class="ghtabs">
+              <span class="ghtab">Code</span>
+              <span class="ghtab hot">Issues</span>
+              <span class="point">&#9668; click Issues</span>
+              <span class="ghtab">Pull requests</span>
+              <span class="ghtab">Actions</span>
+            </div>
+            <div class="ghmuted">The place for tasks and requests for the website.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wstep">
+      <div class="wnum">2</div>
+      <div class="wbody">
+        <p class="wcap">Click the green <strong>New issue</strong> button.</p>
+        <div class="shot">
+          <div class="shot-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="urlpill">.../carmody_lab_website/issues</span></div>
+          <div class="shot-body">
+            <div class="actionrow" style="justify-content:space-between;">
+              <span class="ghmuted">Filters &middot; Open &middot; Closed</span>
+              <span class="actionrow"><span class="ghbtn hot">New issue</span><span class="point">&#9668; click New issue</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wstep">
+      <div class="wnum">3</div>
+      <div class="wbody">
+        <p class="wcap">Choose your task. Click <strong>Get started</strong> next to it.</p>
+        <div class="shot">
+          <div class="shot-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="urlpill">.../issues/new/choose</span></div>
+          <div class="shot-body">
+            <div class="ghrow"><span class="t">Add a news item</span><span class="actionrow"><span class="ghbtn hot">Get started</span><span class="point">&#9668; pick your task</span></span></div>
+            <div class="ghrow"><span class="t">Add a lab member</span><span class="ghbtn grey">Get started</span></div>
+            <div class="ghrow"><span class="t">Edit a lab member</span><span class="ghbtn grey">Get started</span></div>
+            <div class="ghrow"><span class="t">Remove a lab member</span><span class="ghbtn grey">Get started</span></div>
+            <div class="ghrow"><span class="t">Edit text on a page</span><span class="ghbtn grey">Get started</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wstep">
+      <div class="wnum">4</div>
+      <div class="wbody">
+        <p class="wcap">Fill in the fields. To add a photo, drag it into the Photo box. Then click <strong>Submit new issue</strong>.</p>
+        <div class="shot">
+          <div class="shot-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="urlpill">.../issues/new</span></div>
+          <div class="shot-body">
+            <div class="field"><span class="lbl">Date</span><span class="val">July 15, 2026</span></div>
+            <div class="field"><span class="lbl">News text</span><span class="val">Congratulations to graduate student John Kahumbu on passing his qualifying exam!</span></div>
+            <div class="actionrow"><span class="ghbtn hot">Submit new issue</span><span class="point">&#9668; click Submit</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wstep">
+      <div class="wnum">5</div>
+      <div class="wbody">
+        <p class="wcap">Wait about 1 minute. Open the pull request. Look at the change. Click <strong>Merge pull request</strong> to publish.</p>
+        <div class="shot">
+          <div class="shot-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="urlpill">.../pull/12</span></div>
+          <div class="shot-body">
+            <div class="gcomment">The website prepared your change and opened this pull request. Look at it, then click Merge.</div>
+            <div class="field"><span class="lbl">Files changed</span><span class="val">news.html, index.html, js/main.js</span></div>
+            <div class="actionrow"><span class="ghbtn hot">Merge pull request</span><span class="point">&#9668; click to publish</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p>The website shows the change about 1 minute after you merge.</p>
   <div class="callout warn"><span class="ic">!</span><p>Nothing goes live until you click <strong>Merge pull request</strong>. If the change is not correct, do not merge it. Close the pull request, or ask Claude Code to help.</p></div>
   <div class="callout tip"><span class="ic">&#10022;</span><p>The forms do only the 4 tasks above. For any other change (a publication, a slideshow image, the CV, and more), use Claude Code. The prompts are in Section 05.</p></div>
 </section>
