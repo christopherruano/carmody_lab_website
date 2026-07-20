@@ -287,7 +287,7 @@
     { page: 'People', url: 'people.html', title: 'Cary Allen-Blevins', text: 'Lecturer, Former Graduate Student. Interested in how nutrition can affect behavior via the microbiota-gut-brain axis. Studying co-evolution between mother\'s milk and microbes of the infant gut.' },
     { page: 'People', url: 'people.html', title: 'Alex Cooper-Hohn', text: 'Associate Researcher.' },
     { page: 'People', url: 'people.html', title: 'Neil Ibata', text: 'Postdoctoral Fellow.' },
-    { page: 'People', url: 'people.html', title: 'John Kahumbu', text: 'Graduate Student.' },
+    { page: 'People', url: 'people.html', title: 'John Kahumbu', text: 'Graduate Student. Automated content-bot edit test. Please ignore.' },
     { page: 'People', url: 'people.html', title: 'Yi Jia (Claire) Liow', text: 'Former Visiting Fellow. Postdoctoral Fellow, Bohórquez Lab, Duke University. Research explores the intersection of nutritional neuroscience, the gut microbiome, and eating behavior.' },
     { page: 'People', url: 'people.html', title: 'Cameron McInroy', text: 'Associate Researcher.' },
     { page: 'People', url: 'people.html', title: 'Christopher Ruaño', text: 'Undergraduate Researcher.' },
