@@ -1,0 +1,48 @@
+name: Add a lab member
+description: Add a current member to the People page.
+title: "Person: "
+labels: ["content: person"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill in the fields below. Then click **Submit new issue**.
+        The website prepares the change and opens a pull request. Look at it, then click **Merge** to publish.
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: The full name, as it should appear on the website.
+      placeholder: Jane Doe
+    validations:
+      required: true
+  - type: input
+    id: role
+    attributes:
+      label: Role
+      placeholder: Graduate Student
+    validations:
+      required: true
+  - type: input
+    id: email
+    attributes:
+      label: Email
+      description: Optional. Leave empty if there is none.
+      placeholder: jdoe@fas.harvard.edu
+    validations:
+      required: false
+  - type: textarea
+    id: bio
+    attributes:
+      label: Bio
+      description: Optional. A short paragraph about the person.
+    validations:
+      required: false
+  - type: textarea
+    id: photo
+    attributes:
+      label: Photo
+      description: Drag a photo into this box. It uploads automatically. Use a square photo, 600px or more.
+      placeholder: Drag the photo here...
+    validations:
+      required: true

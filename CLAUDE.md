@@ -94,23 +94,29 @@ features when you edit.
 - Keep this file, `Maintenance-Guide.pdf`, and `Handoff-Notes.pdf` correct when the
   structure changes.
 
-## Content bot (news form)
-A GitHub Action lets a lab member add a news item from a form. A person does not use
-a terminal for this task.
+## Content bot (forms)
+A GitHub Action lets a lab member make the most common changes from a form. A person
+does not use a terminal for these tasks.
 
-- The form is `.github/ISSUE_TEMPLATE/add-news.yml`. It makes an issue with a title
-  that starts with `News:`.
-- The workflow `.github/workflows/content-bot.yml` runs on that issue. It runs
-  `scripts/add-news.mjs`. The script edits `news.html`, the Recent News list in
-  `index.html`, and the `searchIndex` in `js/main.js`. Then the workflow opens a
-  pull request. Nothing goes live until a person merges the pull request.
+- The forms are in `.github/ISSUE_TEMPLATE/`. Each form makes an issue with a title
+  that starts with a known word:
+  - `add-news.yml` &rarr; title `News:` &rarr; `scripts/add-news.mjs`
+  - `add-person.yml` &rarr; title `Person:` &rarr; `scripts/add-person.mjs`
+  - `remove-person.yml` &rarr; title `Remove person:` &rarr; `scripts/delete-person.mjs`
+  - `edit-text.yml` &rarr; title `Edit text:` &rarr; `scripts/edit-text.mjs`
+- The workflow `.github/workflows/content-bot.yml` reads the title, runs the correct
+  script, then opens a pull request. Nothing goes live until a person merges it.
 - The workflow runs only for a repository collaborator (the author-association gate).
-- The generator is deterministic. It does not use an AI. It only rewrites the
-  existing HTML patterns. If you change those patterns, update the string anchors in
-  `scripts/add-news.mjs`.
-- To add a "person" form or a "publication" form later, copy this pattern: a new
-  issue-form YAML, a new `scripts/add-*.mjs`, and a new job in the workflow.
-- Claude Code does all other changes. The bot covers only the most frequent task.
+- The generators share `scripts/content-lib.mjs`. They are deterministic (no AI). They
+  only rewrite the existing HTML/JS patterns. If you change those patterns, update the
+  string anchors in the scripts.
+- `add-person.mjs` downloads the photo the person attached to the form and saves it in
+  `images/people/`. `edit-text.mjs` matches the current text even when the page stores
+  it with HTML entities (quotes, apostrophes, dashes, `&`); if it finds no match, it
+  fails and the workflow tells the person to use Claude Code.
+- To add a "publication" form later, copy the pattern: a new issue-form YAML, a new
+  `scripts/add-*.mjs`, and a new title branch in the workflow router.
+- Claude Code does all other changes. The bot covers only the most frequent tasks.
 
 ## Regenerate the guides
 `Maintenance-Guide.pdf` and `Handoff-Notes.pdf` are the guides for people. A tool

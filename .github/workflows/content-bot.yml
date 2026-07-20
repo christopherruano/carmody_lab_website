@@ -1,8 +1,8 @@
 name: Content bot
 
-# When a lab member submits the "Add a news item" form (an issue whose title
-# starts with "News:"), this workflow edits the site the correct way and opens a
-# pull request. Nothing goes live until a person clicks Merge on that pull request.
+# When a lab member submits a content form (an issue whose title starts with a
+# known prefix), this workflow edits the site the correct way and opens a pull
+# request. Nothing goes live until a person clicks Merge on that pull request.
 
 on:
   issues:
@@ -14,37 +14,54 @@ permissions:
   pull-requests: write
 
 jobs:
-  add-news:
-    # Only run for the news form, and only when a repo collaborator opened it.
+  run:
+    # Only run for a content form, and only when a repo collaborator opened it.
     if: >
-      startsWith(github.event.issue.title, 'News:') &&
-      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.issue.author_association)
+      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.issue.author_association) &&
+      (startsWith(github.event.issue.title, 'News:') ||
+       startsWith(github.event.issue.title, 'Person:') ||
+       startsWith(github.event.issue.title, 'Remove person:') ||
+       startsWith(github.event.issue.title, 'Edit text:'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build the news item
+      - name: Choose the script
+        id: route
+        env:
+          TITLE: ${{ github.event.issue.title }}
+        run: |
+          if [[ "$TITLE" == News:* ]]; then s=add-news.mjs; k=news
+          elif [[ "$TITLE" == "Remove person:"* ]]; then s=delete-person.mjs; k=remove-person
+          elif [[ "$TITLE" == Person:* ]]; then s=add-person.mjs; k=person
+          elif [[ "$TITLE" == "Edit text:"* ]]; then s=edit-text.mjs; k=edit-text
+          fi
+          echo "script=$s" >> "$GITHUB_OUTPUT"
+          echo "kind=$k" >> "$GITHUB_OUTPUT"
+
+      - name: Make the change
         id: gen
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
-        run: node scripts/add-news.mjs
+        run: node "scripts/${{ steps.route.outputs.script }}"
 
       - name: Open a pull request
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
-          NEWS_DATE: ${{ steps.gen.outputs.date }}
+          KIND: ${{ steps.route.outputs.kind }}
+          SUMMARY: ${{ steps.gen.outputs.summary }}
         run: |
           set -e
-          BRANCH="content/news-${ISSUE_NUMBER}"
+          BRANCH="content/${KIND}-${ISSUE_NUMBER}"
           git config user.name "carmody-content-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
           git add -A
-          git commit -m "Add news item: ${NEWS_DATE}"
+          git commit -m "$SUMMARY"
           git push -u origin "$BRANCH"
-          PR_BODY=$(printf 'Prepared from #%s. Review the change below, then click **Merge** to publish. The website updates about 1 minute after you merge.\n\nCloses #%s' "$ISSUE_NUMBER" "$ISSUE_NUMBER")
-          gh pr create --base main --head "$BRANCH" --title "Add news item: ${NEWS_DATE}" --body "$PR_BODY"
+          PR_BODY=$(printf 'Prepared from #%s. Review the change, then click **Merge** to publish. The website updates about 1 minute after you merge.\n\nCloses #%s' "$ISSUE_NUMBER" "$ISSUE_NUMBER")
+          gh pr create --base main --head "$BRANCH" --title "$SUMMARY" --body "$PR_BODY"
           gh issue comment "$ISSUE_NUMBER" --body "Thank you. I prepared the change and opened a pull request. Open it, look at the change, then click **Merge** to publish."
 
       - name: Report a problem
@@ -53,4 +70,4 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
-          gh issue comment "$ISSUE_NUMBER" --body "Sorry, I could not prepare this change. Please check the Date and News text, or ask Claude Code to add it."
+          gh issue comment "$ISSUE_NUMBER" --body "Sorry, I could not prepare this change. Please check the fields you filled in, or ask Claude Code to make the change."

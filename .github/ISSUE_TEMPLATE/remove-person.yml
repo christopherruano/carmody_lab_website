@@ -1,0 +1,18 @@
+name: Remove a lab member
+description: Remove a member from the People page.
+title: "Remove person: "
+labels: ["content: person"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Type the name of the member to remove. Then click **Submit new issue**.
+        The website prepares the change and opens a pull request. Look at it, then click **Merge** to publish.
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: The exact name, as it appears now on the People page.
+      placeholder: Jane Doe
+    validations:
+      required: true
