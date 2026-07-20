@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+._*
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Editor / OS cruft
+*~
+.vscode/
+*.swp
+
+# Loose screenshots dropped into the repo root
+/Screenshot *.png

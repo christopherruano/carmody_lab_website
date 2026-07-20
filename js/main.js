@@ -10,6 +10,7 @@
 
     var links = [
       { href: 'index.html', text: 'Home' },
+      { href: 'about.html', text: 'About' },
       { href: 'research.html', text: 'Research' },
       { href: 'people.html', text: 'People' },
       { href: 'publications.html', text: 'Publications' },
@@ -282,19 +283,19 @@
 
   var searchIndex = [
     // People - Current
-    { page: 'People', url: 'people.html', title: 'Rachel Carmody', text: 'Thomas D. Cabot Associate Professor of Human Evolutionary Biology. Principal Investigator, Nutritional & Microbial Ecology Laboratoryoratory. I seek to understand how the human body acquires and utilizes energy, and how past changes in energy budget have shaped human evolution.' },
+    { page: 'People', url: 'people.html', title: 'Rachel Carmody', text: 'Thomas D. Cabot Associate Professor of Human Evolutionary Biology. Principal Investigator, Nutritional & Microbial Ecology Laboratory. I seek to understand how the human body acquires and utilizes energy, and how past changes in energy budget have shaped human evolution.' },
     { page: 'People', url: 'people.html', title: 'Cary Allen-Blevins', text: 'Lecturer, Former Graduate Student. Interested in how nutrition can affect behavior via the microbiota-gut-brain axis. Studying co-evolution between mother\'s milk and microbes of the infant gut.' },
-    { page: 'People', url: 'people.html', title: 'Alex Cooper-Hohn', text: 'Post-Baccalaureate Researcher.' },
+    { page: 'People', url: 'people.html', title: 'Alex Cooper-Hohn', text: 'Associate Researcher.' },
     { page: 'People', url: 'people.html', title: 'Neil Ibata', text: 'Postdoctoral Fellow.' },
     { page: 'People', url: 'people.html', title: 'John Kahumbu', text: 'Graduate Student.' },
     { page: 'People', url: 'people.html', title: 'Yi Jia (Claire) Liow', text: 'Former Visiting Fellow. Postdoctoral Fellow, Bohórquez Lab, Duke University. Research explores the intersection of nutritional neuroscience, the gut microbiome, and eating behavior.' },
-    { page: 'People', url: 'people.html', title: 'Cameron McInroy', text: 'Post-Baccalaureate Researcher.' },
+    { page: 'People', url: 'people.html', title: 'Cameron McInroy', text: 'Associate Researcher.' },
     { page: 'People', url: 'people.html', title: 'Christopher Ruaño', text: 'Undergraduate Researcher.' },
     { page: 'People', url: 'people.html', title: 'Grace Rubin', text: 'Graduate Student.' },
     { page: 'People', url: 'people.html', title: 'Amar Sarkar', text: 'Graduate Student. Completed master\'s degrees at Oxford and Cambridge. Interested in human health, development, and evolution. Studies host-microbe interactions using an evolutionary framework.' },
     { page: 'People', url: 'people.html', title: 'Laura Schell', text: 'Postdoctoral Fellow, Former Graduate Student & NSF Graduate Research Fellow. Interested in the co-evolution of humans with gut microbiota and how plasticity in the gut microbiome contributes to variations in host phenotype.' },
     { page: 'People', url: 'people.html', title: 'Emily Venable', text: 'Former Graduate Student & NSF Graduate Research Fellow. Life Science Specialist, L.E.K. Consulting. Studied how variations in the human diet affect the composition and function of the gut microbiome.' },
-    { page: 'People', url: 'people.html', title: 'Ludovico Rollo', text: 'Former Undergraduate Researcher and Hoopes Prize Awardee, Current Collaborator.' },
+    { page: 'People', url: 'people.html', title: 'Ludovico Rollo', text: 'Associate Researcher. Former Undergraduate Researcher and Hoopes Prize Awardee.' },
 
     // People - Former
     { page: 'People', url: 'people.html', title: 'Andrew Bolze', text: 'Former Undergraduate Researcher and AHA Fellow. M.D., Resident in Plastic & Reconstructive Surgery, Beth Israel Lahey Health.' },
@@ -350,7 +351,7 @@
     { page: 'Research', url: 'research.html', title: 'Comparative gut microbiomes', text: 'How and why are human gut microbiomes different from those of other species? Humans have a unique ecological history driven by calorie-rich, highly omnivorous and processed diets, changes in life history, and cooperation.' },
 
     // Laboratory
-    { page: 'Laboratory', url: 'laboratory.html', title: 'Lab Facilities', text: 'Constructed in 2016, the Nutritional & Microbial Ecology Laboratoryoratory. 1,627 square feet ADA-compliant facilities. 10 dedicated bench workstations, chemical hoods, anaerobic culturing, PCR, cold room. Peabody Museum, 11 Divinity Avenue, 5th Floor.' },
+    { page: 'Laboratory', url: 'laboratory.html', title: 'Lab Facilities', text: 'Constructed in 2016, the Nutritional & Microbial Ecology Laboratory. 1,627 square feet ADA-compliant facilities. 10 dedicated bench workstations, chemical hoods, anaerobic culturing, PCR, cold room. Peabody Museum, 11 Divinity Avenue, 5th Floor.' },
     { page: 'Laboratory', url: 'laboratory.html', title: 'Nutritional Biochemistry', text: 'Dietary protein, lipid, carbohydrate (sugar, starch, insoluble and soluble fiber), ash, moisture analysis.' },
     { page: 'Laboratory', url: 'laboratory.html', title: 'Physiology', text: 'Metabolic rate by open-flow and closed-system respirometry. Nutrient intake by perfusion. Body composition by magnetic resonance imaging. Physiological cell staining.' },
     { page: 'Laboratory', url: 'laboratory.html', title: 'Microbial Ecology', text: 'Anaerobic and aerobic culturing. Assessment of point-in-time and kinetic growth. Quantitative PCR. DNA and RNA sequencing.' },
@@ -373,7 +374,10 @@
     { page: 'News', url: 'news.html', title: 'Roslyn Abramson Award (2022)', text: 'Rachel has won the 2022 Roslyn Abramson Award for excellence and sensitivity in the teaching of undergraduates.' },
 
     // Home
-    { page: 'Home', url: 'index.html', title: 'Carmody Laboratory', text: 'Nutritional & Microbial Ecology Laboratory. Harvard University. Department of Human Evolutionary Biology. We study how the gut microbiome shapes human health and evolution, probing the energetic consequences of interactions between humans and the trillions of microbes in the gastrointestinal tract.' }
+    { page: 'Home', url: 'index.html', title: 'Carmody Laboratory', text: 'Nutritional & Microbial Ecology Laboratory. Harvard University. Department of Human Evolutionary Biology. We study how the gut microbiome shapes human health and evolution, probing the energetic consequences of interactions between humans and the trillions of microbes in the gastrointestinal tract.' },
+
+    // About
+    { page: 'About', url: 'about.html', title: 'About the Lab', text: 'Our mission. Life depends on success in acquiring energy and allocating it to growth, maintenance, reproduction and activity. We study the biological, behavioral, and environmental determinants of human energy gain and utilization, and how the gut microbiome shapes host energy balance through diet, health, and genetic factors.' }
   ];
 
   function initSearch() {
@@ -402,7 +406,7 @@
       });
 
       if (matches.length === 0) {
-        dropdown.innerHTML = '<div class=”search-empty”>No results for “' + escapeHtml(this.value) + '”</div>';
+        dropdown.innerHTML = '<div class="search-empty">No results for &ldquo;' + escapeHtml(this.value) + '&rdquo;</div>';
         showDropdown();
         return;
       }
