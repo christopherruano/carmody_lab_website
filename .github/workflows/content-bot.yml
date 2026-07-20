@@ -21,6 +21,7 @@ jobs:
       (startsWith(github.event.issue.title, 'News:') ||
        startsWith(github.event.issue.title, 'Person:') ||
        startsWith(github.event.issue.title, 'Remove person:') ||
+       startsWith(github.event.issue.title, 'Edit person:') ||
        startsWith(github.event.issue.title, 'Edit text:'))
     runs-on: ubuntu-latest
     steps:
@@ -36,6 +37,7 @@ jobs:
         run: |
           if [[ "$TITLE" == News:* ]]; then s=add-news.mjs; k=news
           elif [[ "$TITLE" == "Remove person:"* ]]; then s=delete-person.mjs; k=remove-person
+          elif [[ "$TITLE" == "Edit person:"* ]]; then s=edit-person.mjs; k=edit-person
           elif [[ "$TITLE" == Person:* ]]; then s=add-person.mjs; k=person
           elif [[ "$TITLE" == "Edit text:"* ]]; then s=edit-text.mjs; k=edit-text
           fi

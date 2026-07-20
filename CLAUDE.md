@@ -107,6 +107,7 @@ does not use a terminal for these tasks.
   that starts with a known word:
   - `add-news.yml` &rarr; title `News:` &rarr; `scripts/add-news.mjs`
   - `add-person.yml` &rarr; title `Person:` &rarr; `scripts/add-person.mjs`
+  - `edit-person.yml` &rarr; title `Edit person:` &rarr; `scripts/edit-person.mjs`
   - `remove-person.yml` &rarr; title `Remove person:` &rarr; `scripts/delete-person.mjs`
   - `edit-text.yml` &rarr; title `Edit text:` &rarr; `scripts/edit-text.mjs`
 - The workflow `.github/workflows/content-bot.yml` reads the title, runs the correct
@@ -115,7 +116,12 @@ does not use a terminal for these tasks.
 - The generators share `scripts/content-lib.mjs`. They are deterministic (no AI). They
   only rewrite the existing HTML/JS patterns. If you change those patterns, update the
   string anchors in the scripts.
-- `add-person.mjs` downloads the photo the person attached to the form and saves it in
+- `Role` on the add and edit forms is a **dropdown** of the 6 ranks, so seniority
+  ordering is exact. `add-person.mjs` inserts at the right rank; `edit-person.mjs`
+  edits a current member in place and, if the role's rank changes, moves the card to
+  the new seniority position. On the edit form, a blank field keeps the current value
+  and the word `none` removes that line.
+- `add-person.mjs` / `edit-person.mjs` download the attached photo into
   `images/people/`. `edit-text.mjs` matches the current text even when the page stores
   it with HTML entities (quotes, apostrophes, dashes, `&`); if it finds no match, it
   fails and the workflow tells the person to use Claude Code.

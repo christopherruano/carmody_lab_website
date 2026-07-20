@@ -1,0 +1,62 @@
+name: Edit a lab member
+description: Change a current member's details without removing them.
+title: "Edit person: "
+labels: ["content: person"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Change the details of a current member. You do not remove and re-add them.
+        **Leave a field empty to keep it the same.** Type **none** to remove a line (for example, to remove an email).
+        The website prepares the change and opens a pull request. Look at it, then click **Merge** to publish.
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: The name of the current member to change, as it appears now.
+      placeholder: Jane Doe
+    validations:
+      required: true
+  - type: dropdown
+    id: role
+    attributes:
+      label: New role
+      description: If the role changes, the person moves to the correct place in the list.
+      options:
+        - (keep the same)
+        - Principal Investigator
+        - Lecturer
+        - Postdoctoral Fellow
+        - Graduate Student
+        - Undergraduate Researcher
+        - Associate Researcher
+    validations:
+      required: true
+  - type: input
+    id: note
+    attributes:
+      label: New extra note
+      description: Optional. The second line under the role. Empty keeps it. Type "none" to remove it.
+    validations:
+      required: false
+  - type: input
+    id: email
+    attributes:
+      label: New email
+      description: Optional. Empty keeps it. Type "none" to remove it.
+    validations:
+      required: false
+  - type: textarea
+    id: bio
+    attributes:
+      label: New bio
+      description: Optional. Empty keeps it. Type "none" to remove it.
+    validations:
+      required: false
+  - type: textarea
+    id: photo
+    attributes:
+      label: New photo
+      description: Optional. Drag a new photo here to replace the current one. Empty keeps the current photo.
+    validations:
+      required: false

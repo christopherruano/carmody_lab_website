@@ -8,6 +8,7 @@ body:
       value: |
         Fill in the fields below. Then click **Submit new issue**.
         The website prepares the change and opens a pull request. Look at it, then click **Merge** to publish.
+        The new member is placed in the correct order by role (seniority).
   - type: input
     id: name
     attributes:
@@ -16,13 +17,27 @@ body:
       placeholder: Jane Doe
     validations:
       required: true
-  - type: input
+  - type: dropdown
     id: role
     attributes:
       label: Role
-      placeholder: Graduate Student
+      description: Choose the role. This also sets the person's place in the list.
+      options:
+        - Principal Investigator
+        - Lecturer
+        - Postdoctoral Fellow
+        - Graduate Student
+        - Undergraduate Researcher
+        - Associate Researcher
     validations:
       required: true
+  - type: input
+    id: note
+    attributes:
+      label: Extra note
+      description: Optional. A second line under the role, for example "Former Graduate Student & NSF Fellow".
+    validations:
+      required: false
   - type: input
     id: email
     attributes:
