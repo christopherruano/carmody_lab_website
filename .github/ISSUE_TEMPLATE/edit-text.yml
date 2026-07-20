@@ -1,0 +1,41 @@
+name: Edit text on a page
+description: Change a piece of text that is already on a page.
+title: "Edit text: "
+labels: ["content: text"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this to change text that is already on the website.
+        Copy the current text exactly as it appears now. Then write the new text.
+        The website prepares the change and opens a pull request. Look at it, then click **Merge** to publish.
+  - type: dropdown
+    id: page
+    attributes:
+      label: Page
+      description: The page that has the text.
+      options:
+        - Home
+        - About
+        - Research
+        - People
+        - Publications
+        - Laboratory
+        - News
+        - Contact
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current text
+      description: Copy the text exactly as it appears now on the page.
+    validations:
+      required: true
+  - type: textarea
+    id: new
+    attributes:
+      label: New text
+      description: The new text that replaces it.
+    validations:
+      required: true

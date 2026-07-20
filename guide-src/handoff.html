@@ -59,6 +59,17 @@
 
 <section class="block">
   <span class="sec-num">Handoff</span>
+  <h2 class="sec">The content bot (forms)</h2>
+  <p>A GitHub Action lets Rachel or Amar make the 4 most common changes from a form, with no terminal: add a news item, add a lab member, remove a lab member, and change text on a page.</p>
+  <ul class="clean">
+    <li>The forms are in <code>.github/ISSUE_TEMPLATE/</code>. The workflow is <code>.github/workflows/content-bot.yml</code>. The generators are in <code>scripts/</code>.</li>
+    <li>A form makes an issue. The workflow runs the correct generator, edits the files, and opens a pull request. <strong>Nothing goes live until a person merges the pull request.</strong></li>
+    <li>The generators are deterministic. They do not use an AI. There is no API key and no cost for each use.</li>
+    <li>The workflow runs only for a repository collaborator. It never publishes on its own.</li>
+    <li>One repository setting must stay on: <em>Settings &rarr; Actions &rarr; General &rarr; "Allow GitHub Actions to create and approve pull requests."</em> It is on now.</li>
+    <li>Claude Code does all other changes. To add a "publication" form later, copy the pattern (a form, a <code>scripts/add-*.mjs</code>, and a branch in the workflow router). <code>CLAUDE.md</code> has the details.</li>
+  </ul>
+
   <h2 class="sec">The documents in the repository</h2>
   <div class="table-scroll">
     <table>
