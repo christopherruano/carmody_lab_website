@@ -111,6 +111,10 @@ does not use a terminal for these tasks.
   - `remove-person.yml` &rarr; title `Remove person:` &rarr; `scripts/delete-person.mjs`
   - `edit-text.yml` &rarr; title `Edit text:` &rarr; `scripts/edit-text.mjs`
   - `add-publication.yml` &rarr; title `Publication:` &rarr; `scripts/add-publication.mjs`
+  - `edit-publication.yml` &rarr; title `Edit publication:` &rarr; `scripts/edit-publication.mjs`
+  - `remove-publication.yml` &rarr; title `Remove publication:` &rarr; `scripts/remove-publication.mjs`
+  - `undo.yml` &rarr; title `Undo:` &rarr; no script; the workflow reverts the last
+    commit by `carmody-content-bot` and pushes
 - The workflow `.github/workflows/content-bot.yml` reads the title, runs the correct
   script, then **commits straight to `main`** (auto-publish). The change is live in
   about 1 minute; there is no review step. If a generator fails, nothing is committed
@@ -131,7 +135,10 @@ does not use a terminal for these tasks.
   it with HTML entities (quotes, apostrophes, dashes, `&`); if it finds no match, it
   fails and the workflow tells the person to use Claude Code.
 - `add-publication.mjs` bolds the lab-member authors, places the entry under a year or
-  Preprints, and downloads an attached PDF into `pdfs/`.
+  Preprints, and downloads an attached PDF into `pdfs/`. `edit-publication.mjs` fixes
+  the authors, title, or link in place (not the journal/year/section). The workflow's
+  "Undo" path reverts the last bot commit; the checkout uses `fetch-depth: 0` so the
+  history is available. The publish comment links to the changed page ("see it live").
 - To add another form, copy the pattern: a new issue-form YAML, a new `scripts/*.mjs`,
   and a new title branch in the workflow router.
 - Claude Code does all other changes. The bot covers only the most frequent tasks.

@@ -1,0 +1,20 @@
+name: Undo the last change
+description: Put the website back the way it was before the last form change.
+title: "Undo: revert the last change"
+labels: ["content: undo"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This undoes the **most recent change** that was made through a form.
+        The website goes back to how it was, in about 1 minute.
+        Use this if a change you just made is wrong.
+  - type: dropdown
+    id: confirm
+    attributes:
+      label: Confirm
+      description: This reverses the last form change.
+      options:
+        - Yes, undo the last change
+    validations:
+      required: true

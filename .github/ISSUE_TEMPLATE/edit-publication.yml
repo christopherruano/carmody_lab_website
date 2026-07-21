@@ -1,0 +1,48 @@
+name: Edit a publication
+description: Fix the authors, title, or link of a publication.
+title: "Edit publication: "
+labels: ["content: publication"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fix the **authors**, **title**, or **link** of a publication.
+        **Leave a field empty to keep it the same.**
+        To change the journal, year, or section, remove the publication and add it again.
+        The change appears on the website by itself in about 1 minute.
+  - type: input
+    id: find
+    attributes:
+      label: Find by title
+      description: A few words from the current title, enough to find the right one.
+      placeholder: island biology of the host microbiome
+    validations:
+      required: true
+  - type: input
+    id: authors
+    attributes:
+      label: New authors
+      description: Optional. The full author list, in order. Empty keeps it.
+    validations:
+      required: false
+  - type: input
+    id: labauthors
+    attributes:
+      label: New lab authors
+      description: Optional. Which of the new authors are lab members (shown in bold). Comma-separated.
+    validations:
+      required: false
+  - type: input
+    id: title
+    attributes:
+      label: New title
+      description: Optional. Empty keeps the current title.
+    validations:
+      required: false
+  - type: input
+    id: link
+    attributes:
+      label: New link
+      description: Optional. The DOI or web link. Empty keeps the current link.
+    validations:
+      required: false

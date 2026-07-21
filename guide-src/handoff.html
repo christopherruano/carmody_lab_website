@@ -60,7 +60,7 @@
 <section class="block">
   <span class="sec-num">Handoff</span>
   <h2 class="sec">The content bot (forms)</h2>
-  <p>A GitHub Action lets Rachel or Amar make the most common changes from a form, with no terminal: add a news item; add, edit, or remove a lab member; add a publication; and change text on a page.</p>
+  <p>A GitHub Action lets Rachel or Amar make the most common changes from a form, with no terminal: add a news item; add, edit, or remove a lab member; add, edit, or remove a publication; change text on a page; and undo the last change.</p>
   <ul class="clean">
     <li>The forms are in <code>.github/ISSUE_TEMPLATE/</code>. The workflow is <code>.github/workflows/content-bot.yml</code>. The generators are in <code>scripts/</code>.</li>
     <li>A form makes an issue. The workflow runs the correct generator, edits the files, and <strong>commits straight to the <code>main</code> branch (auto-publish)</strong>. The change is on the website in about 1 minute. There is no review step.</li>

@@ -18,7 +18,10 @@ appears on the website by itself in about 1 minute — nothing else to do.
 | Edit a lab member | [Edit a lab member →](https://github.com/christopherruano/carmody_lab_website/issues/new?template=edit-person.yml) |
 | Remove a lab member | [Remove a lab member →](https://github.com/christopherruano/carmody_lab_website/issues/new?template=remove-person.yml) |
 | Add a publication | [Add a publication →](https://github.com/christopherruano/carmody_lab_website/issues/new?template=add-publication.yml) |
+| Edit a publication | [Edit a publication →](https://github.com/christopherruano/carmody_lab_website/issues/new?template=edit-publication.yml) |
+| Remove a publication | [Remove a publication →](https://github.com/christopherruano/carmody_lab_website/issues/new?template=remove-publication.yml) |
 | Change text on a page | [Change text on a page →](https://github.com/christopherruano/carmody_lab_website/issues/new?template=edit-text.yml) |
+| **Made a mistake? Undo it** | [Undo the last change →](https://github.com/christopherruano/carmody_lab_website/issues/new?template=undo.yml) |
 
 **Full instructions with pictures:** [**Maintenance-Guide.pdf**](Maintenance-Guide.pdf).
 For anything the forms do not cover, use Claude Code (the guide has ready-to-use

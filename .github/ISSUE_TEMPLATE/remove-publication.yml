@@ -1,0 +1,18 @@
+name: Remove a publication
+description: Remove a paper or preprint from the Publications page.
+title: "Remove publication: "
+labels: ["content: publication"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Type a few words from the title of the publication to remove. Then click **Submit new issue**.
+        The change appears on the website by itself in about 1 minute.
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: A few words from the title, enough to find the right one.
+      placeholder: island biology of the host microbiome
+    validations:
+      required: true

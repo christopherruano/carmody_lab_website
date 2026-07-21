@@ -161,3 +161,16 @@ export function toPlain(s) {
     .trim()
     .toLowerCase();
 }
+
+/** Regex matching a .pub-entry block (no trailing newline). */
+export const PUB_ENTRY_RE = / {6}<div class="pub-entry">[\s\S]*?\n {6}<\/div>/g;
+
+/** Build an author list with the lab members wrapped in <strong>. */
+export function boldAuthors(authors, labAuthors) {
+  let html = htmlEscape(authors);
+  (labAuthors || '').split(',').map((s) => s.trim()).filter(Boolean).forEach((la) => {
+    const e = htmlEscape(la);
+    if (e && html.includes(e)) html = html.split(e).join(`<strong>${e}</strong>`);
+  });
+  return html;
+}

@@ -2,8 +2,8 @@ name: Content bot
 
 # When a lab member submits a content form (an issue whose title starts with a
 # known prefix), this workflow edits the site the correct way and publishes it
-# straight to the website. If a change is ever wrong, revert the commit (the
-# history keeps every version) or ask Claude Code to undo it.
+# straight to the website. The "Undo" form reverts the last change. If a change is
+# ever wrong, revert the commit (the history keeps every version) or ask Claude Code.
 
 on:
   issues:
@@ -27,11 +27,16 @@ jobs:
        startsWith(github.event.issue.title, 'Person:') ||
        startsWith(github.event.issue.title, 'Remove person:') ||
        startsWith(github.event.issue.title, 'Edit person:') ||
+       startsWith(github.event.issue.title, 'Publication:') ||
+       startsWith(github.event.issue.title, 'Edit publication:') ||
+       startsWith(github.event.issue.title, 'Remove publication:') ||
        startsWith(github.event.issue.title, 'Edit text:') ||
-       startsWith(github.event.issue.title, 'Publication:'))
+       startsWith(github.event.issue.title, 'Undo:'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -41,26 +46,37 @@ jobs:
         env:
           TITLE: ${{ github.event.issue.title }}
         run: |
-          if [[ "$TITLE" == News:* ]]; then s=add-news.mjs
-          elif [[ "$TITLE" == "Remove person:"* ]]; then s=delete-person.mjs
-          elif [[ "$TITLE" == "Edit person:"* ]]; then s=edit-person.mjs
-          elif [[ "$TITLE" == Person:* ]]; then s=add-person.mjs
+          s=; page=; mode=generate
+          if [[ "$TITLE" == News:* ]]; then s=add-news.mjs; page=news.html
+          elif [[ "$TITLE" == "Remove person:"* ]]; then s=delete-person.mjs; page=people.html
+          elif [[ "$TITLE" == "Edit person:"* ]]; then s=edit-person.mjs; page=people.html
+          elif [[ "$TITLE" == Person:* ]]; then s=add-person.mjs; page=people.html
+          elif [[ "$TITLE" == "Remove publication:"* ]]; then s=remove-publication.mjs; page=publications.html
+          elif [[ "$TITLE" == "Edit publication:"* ]]; then s=edit-publication.mjs; page=publications.html
+          elif [[ "$TITLE" == Publication:* ]]; then s=add-publication.mjs; page=publications.html
           elif [[ "$TITLE" == "Edit text:"* ]]; then s=edit-text.mjs
-          elif [[ "$TITLE" == Publication:* ]]; then s=add-publication.mjs
+          elif [[ "$TITLE" == Undo:* ]]; then mode=undo
           fi
-          echo "script=$s" >> "$GITHUB_OUTPUT"
+          {
+            echo "script=$s"
+            echo "page=$page"
+            echo "mode=$mode"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Make the change
         id: gen
+        if: steps.route.outputs.mode == 'generate'
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: node "scripts/${{ steps.route.outputs.script }}"
 
       - name: Publish to the website
+        if: steps.route.outputs.mode == 'generate'
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           SUMMARY: ${{ steps.gen.outputs.summary }}
+          PAGE: ${{ steps.route.outputs.page }}
         run: |
           set -e
           git config user.name "carmody-content-bot"
@@ -69,7 +85,30 @@ jobs:
           git commit -m "$SUMMARY"
           git pull --rebase origin main
           git push origin HEAD:main
-          gh issue comment "$ISSUE_NUMBER" --body "Done. \"$SUMMARY\" is now on the website. It appears in about 1 minute. If it is wrong, comment here or ask Claude Code to undo it."
+          URL="https://nme.fas.harvard.edu/${PAGE}"
+          gh issue comment "$ISSUE_NUMBER" --body "Done. \"$SUMMARY\" is now on the website. See it here: $URL — it appears in about 1 minute. If it is wrong, use the \"Undo the last change\" form, or ask Claude Code."
+          gh issue close "$ISSUE_NUMBER"
+
+      - name: Undo the last change
+        if: steps.route.outputs.mode == 'undo'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          set -e
+          git config user.name "carmody-content-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          SHA=$(git log --author="carmody-content-bot" -n 1 --format=%H || true)
+          if [ -z "$SHA" ]; then
+            gh issue comment "$ISSUE_NUMBER" --body "There is no recent form change to undo."
+            gh issue close "$ISSUE_NUMBER"
+            exit 0
+          fi
+          SUBJECT=$(git log -1 --format=%s "$SHA")
+          git revert --no-edit "$SHA"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          gh issue comment "$ISSUE_NUMBER" --body "Done. I undid the last change (\"$SUBJECT\"). The website is back to how it was, in about 1 minute."
           gh issue close "$ISSUE_NUMBER"
 
       - name: Report a problem
@@ -78,4 +117,4 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
-          gh issue comment "$ISSUE_NUMBER" --body "Sorry, I could not make this change, so nothing was published. Please check the fields you filled in, or ask Claude Code to make the change."
+          gh issue comment "$ISSUE_NUMBER" --body "Sorry, I could not do this, so nothing changed on the website. Please check what you filled in, or ask Claude Code to help."
