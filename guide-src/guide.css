@@ -122,6 +122,13 @@ td:first-child { font-family: var(--mono); font-size: 8.8pt; color: var(--accent
 code { font-family: var(--mono); font-size: .9em; background: var(--surface-sunk); padding: 1px 5px; border-radius: 4px; color: var(--ink); }
 td code, th code { background: transparent; padding: 0; }
 
+/* Quick links (clickable form list) */
+ul.qlinks { list-style: none; padding-left: 0; margin: 4px 0 10px; }
+ul.qlinks li { position: relative; padding-left: 18px; margin-bottom: 7px; }
+ul.qlinks li::before { content: ""; position: absolute; left: 3px; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+ul.qlinks a { color: var(--accent-strong); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--accent-line); }
+ul.qlinks a::after { content: " \2192"; }
+
 /* Checklist */
 ul.check { list-style: none; padding-left: 0; margin: 0 0 10px; }
 ul.check li { position: relative; padding-left: 26px; margin-bottom: 8px; }
