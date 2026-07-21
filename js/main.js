@@ -313,6 +313,7 @@
     { page: 'People', url: 'people.html', title: 'Dina Zeldin', text: 'Former Undergraduate Researcher.' },
 
     // Publications
+    { page: 'Publications', url: 'publications.html', title: 'Zzztest et al. (2026)', text: 'Zzz content-bot edit-remove test paper. Test Journal.' },
     { page: 'Publications', url: 'publications.html', title: 'Schell, Liow & Carmody (2026)', text: 'Fasting and re-feeding independently alter mouse gut microbiota during intermittent fasting. bioRxiv preprint.' },
     { page: 'Publications', url: 'publications.html', title: 'Schell, Rubin, Chan & Carmody (2025)', text: 'Early-life microbiota disruption by antibiotics elicits fitness trade-offs that differ by sex. bioRxiv preprint.' },
     { page: 'Publications', url: 'publications.html', title: 'Liow et al. (2025)', text: 'Polyunsaturated fatty acids promote appetite via the microbiome-gut-brain axis. bioRxiv preprint.' },
