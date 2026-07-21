@@ -1,8 +1,9 @@
 name: Content bot
 
 # When a lab member submits a content form (an issue whose title starts with a
-# known prefix), this workflow edits the site the correct way and opens a pull
-# request. Nothing goes live until a person clicks Merge on that pull request.
+# known prefix), this workflow edits the site the correct way and publishes it
+# straight to the website. If a change is ever wrong, revert the commit (the
+# history keeps every version) or ask Claude Code to undo it.
 
 on:
   issues:
@@ -11,7 +12,11 @@ on:
 permissions:
   contents: write
   issues: write
-  pull-requests: write
+
+# Publish one change at a time so pushes to main do not collide.
+concurrency:
+  group: content-bot-main
+  cancel-in-progress: false
 
 jobs:
   run:
@@ -22,7 +27,8 @@ jobs:
        startsWith(github.event.issue.title, 'Person:') ||
        startsWith(github.event.issue.title, 'Remove person:') ||
        startsWith(github.event.issue.title, 'Edit person:') ||
-       startsWith(github.event.issue.title, 'Edit text:'))
+       startsWith(github.event.issue.title, 'Edit text:') ||
+       startsWith(github.event.issue.title, 'Publication:'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,14 +41,14 @@ jobs:
         env:
           TITLE: ${{ github.event.issue.title }}
         run: |
-          if [[ "$TITLE" == News:* ]]; then s=add-news.mjs; k=news
-          elif [[ "$TITLE" == "Remove person:"* ]]; then s=delete-person.mjs; k=remove-person
-          elif [[ "$TITLE" == "Edit person:"* ]]; then s=edit-person.mjs; k=edit-person
-          elif [[ "$TITLE" == Person:* ]]; then s=add-person.mjs; k=person
-          elif [[ "$TITLE" == "Edit text:"* ]]; then s=edit-text.mjs; k=edit-text
+          if [[ "$TITLE" == News:* ]]; then s=add-news.mjs
+          elif [[ "$TITLE" == "Remove person:"* ]]; then s=delete-person.mjs
+          elif [[ "$TITLE" == "Edit person:"* ]]; then s=edit-person.mjs
+          elif [[ "$TITLE" == Person:* ]]; then s=add-person.mjs
+          elif [[ "$TITLE" == "Edit text:"* ]]; then s=edit-text.mjs
+          elif [[ "$TITLE" == Publication:* ]]; then s=add-publication.mjs
           fi
           echo "script=$s" >> "$GITHUB_OUTPUT"
-          echo "kind=$k" >> "$GITHUB_OUTPUT"
 
       - name: Make the change
         id: gen
@@ -50,24 +56,21 @@ jobs:
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: node "scripts/${{ steps.route.outputs.script }}"
 
-      - name: Open a pull request
+      - name: Publish to the website
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
-          KIND: ${{ steps.route.outputs.kind }}
           SUMMARY: ${{ steps.gen.outputs.summary }}
         run: |
           set -e
-          BRANCH="content/${KIND}-${ISSUE_NUMBER}"
           git config user.name "carmody-content-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -b "$BRANCH"
           git add -A
           git commit -m "$SUMMARY"
-          git push -u origin "$BRANCH"
-          PR_BODY=$(printf 'Prepared from #%s. Review the change, then click **Merge** to publish. The website updates about 1 minute after you merge.\n\nCloses #%s' "$ISSUE_NUMBER" "$ISSUE_NUMBER")
-          gh pr create --base main --head "$BRANCH" --title "$SUMMARY" --body "$PR_BODY"
-          gh issue comment "$ISSUE_NUMBER" --body "Thank you. I prepared the change and opened a pull request. Open it, look at the change, then click **Merge** to publish."
+          git pull --rebase origin main
+          git push origin HEAD:main
+          gh issue comment "$ISSUE_NUMBER" --body "Done. \"$SUMMARY\" is now on the website. It appears in about 1 minute. If it is wrong, comment here or ask Claude Code to undo it."
+          gh issue close "$ISSUE_NUMBER"
 
       - name: Report a problem
         if: failure()
@@ -75,4 +78,4 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
-          gh issue comment "$ISSUE_NUMBER" --body "Sorry, I could not prepare this change. Please check the fields you filled in, or ask Claude Code to make the change."
+          gh issue comment "$ISSUE_NUMBER" --body "Sorry, I could not make this change, so nothing was published. Please check the fields you filled in, or ask Claude Code to make the change."

@@ -24,7 +24,7 @@
   <p>The website files are on <strong>GitHub</strong>. GitHub keeps a record of each change. When a change is published, the website shows it in about 1 minute. There is no publish button and no server to log in to.</p>
   <p>You have 2 ways to make a change:</p>
   <ul class="clean">
-    <li><strong>A form (the easy way).</strong> For the 4 most common changes, you fill in a form on GitHub. You do not need a terminal. Refer to Section 02.</li>
+    <li><strong>A form (the easy way).</strong> For the most common changes, you fill in a form on GitHub. You do not need a terminal. The change appears by itself. Refer to Section 02.</li>
     <li><strong>Claude Code (for everything else).</strong> Claude Code is an assistant on your computer. You tell it what to change in plain English. Refer to Section 03 and later.</li>
   </ul>
   <div class="callout tip"><span class="ic">&#10022;</span><p>You cannot break the website permanently. GitHub keeps each change in its record. You can undo each change. Refer to Section 10.</p></div>
@@ -33,7 +33,7 @@
 <section class="block">
   <span class="sec-num">Section 02</span>
   <h2 class="sec">The easy way: use a form</h2>
-  <p>For the most common changes, you do not need Claude Code or a terminal. You fill in a form on GitHub. The website prepares the change for you and opens a request. You look at the request and click one button to publish.</p>
+  <p>For the most common changes, you do not need Claude Code or a terminal. You fill in a form on GitHub. The website makes the change and puts it on the site by itself, in about 1 minute. There is no approval step.</p>
 
   <h3>The forms cover these tasks</h3>
   <ul class="clean">
@@ -41,6 +41,7 @@
     <li><strong>Add a lab member</strong></li>
     <li><strong>Edit a lab member</strong> (change a role, email, bio, or photo)</li>
     <li><strong>Remove a lab member</strong></li>
+    <li><strong>Add a publication</strong> (a paper or a preprint)</li>
     <li><strong>Change text on a page</strong></li>
   </ul>
 
@@ -120,22 +121,21 @@
     <div class="wstep">
       <div class="wnum">5</div>
       <div class="wbody">
-        <p class="wcap">Wait about 1 minute. Open the pull request. Look at the change. Click <strong>Merge pull request</strong> to publish.</p>
+        <p class="wcap">That is all. The website makes the change and adds it to the site by itself. The bot writes a comment to confirm.</p>
         <div class="shot">
-          <div class="shot-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="urlpill">.../pull/12</span></div>
+          <div class="shot-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="urlpill">.../issues/12</span></div>
           <div class="shot-body">
-            <div class="gcomment">The website prepared your change and opened this pull request. Look at it, then click Merge.</div>
-            <div class="field"><span class="lbl">Files changed</span><span class="val">news.html, index.html, js/main.js</span></div>
-            <div class="actionrow"><span class="ghbtn hot">Merge pull request</span><span class="point">&#9668; click to publish</span></div>
+            <div class="gcomment">Done. Your change is now on the website. It appears in about 1 minute. If it is wrong, comment here or ask Claude Code to undo it.</div>
+            <div class="ghmuted">You do not click anything. The website updates by itself.</div>
           </div>
         </div>
       </div>
     </div>
 
   </div>
-  <p>The website shows the change about 1 minute after you merge.</p>
-  <div class="callout warn"><span class="ic">!</span><p>Nothing goes live until you click <strong>Merge pull request</strong>. If the change is not correct, do not merge it. Close the pull request, or ask Claude Code to help.</p></div>
-  <div class="callout tip"><span class="ic">&#10022;</span><p>The forms do only the 4 tasks above. For any other change (a publication, a slideshow image, the CV, and more), use Claude Code. The prompts are in Section 05.</p></div>
+  <p>The change appears on the website about 1 minute after you submit.</p>
+  <div class="callout warn"><span class="ic">!</span><p>The change goes on the website by itself, in about 1 minute. There is no approval step, so check your words before you submit. If a change is wrong, you can undo it (see Section 10) or ask Claude Code. If the form cannot do the change, the bot writes a comment and nothing changes on the website.</p></div>
+  <div class="callout tip"><span class="ic">&#10022;</span><p>The forms do the tasks in the list above. For any other change (a slideshow image, the CV, layout, and more), use Claude Code. The prompts are in Section 05.</p></div>
 </section>
 
 <section class="block">

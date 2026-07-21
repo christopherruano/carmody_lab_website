@@ -110,9 +110,14 @@ does not use a terminal for these tasks.
   - `edit-person.yml` &rarr; title `Edit person:` &rarr; `scripts/edit-person.mjs`
   - `remove-person.yml` &rarr; title `Remove person:` &rarr; `scripts/delete-person.mjs`
   - `edit-text.yml` &rarr; title `Edit text:` &rarr; `scripts/edit-text.mjs`
+  - `add-publication.yml` &rarr; title `Publication:` &rarr; `scripts/add-publication.mjs`
 - The workflow `.github/workflows/content-bot.yml` reads the title, runs the correct
-  script, then opens a pull request. Nothing goes live until a person merges it.
+  script, then **commits straight to `main`** (auto-publish). The change is live in
+  about 1 minute; there is no review step. If a generator fails, nothing is committed
+  and the workflow comments on the issue. To restore a review step, replace the
+  "Publish to the website" step with a `gh pr create` step (see git history).
 - The workflow runs only for a repository collaborator (the author-association gate).
+  A `concurrency` group serializes runs so pushes to `main` do not collide.
 - The generators share `scripts/content-lib.mjs`. They are deterministic (no AI). They
   only rewrite the existing HTML/JS patterns. If you change those patterns, update the
   string anchors in the scripts.
@@ -125,8 +130,10 @@ does not use a terminal for these tasks.
   `images/people/`. `edit-text.mjs` matches the current text even when the page stores
   it with HTML entities (quotes, apostrophes, dashes, `&`); if it finds no match, it
   fails and the workflow tells the person to use Claude Code.
-- To add a "publication" form later, copy the pattern: a new issue-form YAML, a new
-  `scripts/add-*.mjs`, and a new title branch in the workflow router.
+- `add-publication.mjs` bolds the lab-member authors, places the entry under a year or
+  Preprints, and downloads an attached PDF into `pdfs/`.
+- To add another form, copy the pattern: a new issue-form YAML, a new `scripts/*.mjs`,
+  and a new title branch in the workflow router.
 - Claude Code does all other changes. The bot covers only the most frequent tasks.
 
 ## Regenerate the guides

@@ -1,0 +1,80 @@
+name: Add a publication
+description: Add a paper or a preprint to the Publications page.
+title: "Publication: "
+labels: ["content: publication"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill in the fields below. Then click **Submit new issue**.
+        The change appears on the website by itself in about 1 minute.
+  - type: input
+    id: authors
+    attributes:
+      label: Authors
+      description: The full author list, in order, as it should appear.
+      placeholder: Schell LD, Liow YJ, Carmody RN
+    validations:
+      required: true
+  - type: input
+    id: labauthors
+    attributes:
+      label: Lab authors
+      description: Which of the authors are lab members? They appear in bold. Comma-separated, exactly as written above.
+      placeholder: Schell LD, Carmody RN
+    validations:
+      required: false
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      placeholder: Fasting and re-feeding independently alter the mouse gut microbiota.
+    validations:
+      required: true
+  - type: input
+    id: journal
+    attributes:
+      label: Journal
+      description: The journal name only. It appears in italics.
+      placeholder: Cell Host & Microbe
+    validations:
+      required: true
+  - type: input
+    id: details
+    attributes:
+      label: Details
+      description: 'Optional. Volume and pages, for example "33: 470-483". Leave empty if there are none.'
+    validations:
+      required: false
+  - type: input
+    id: year
+    attributes:
+      label: Year
+      placeholder: "2026"
+    validations:
+      required: true
+  - type: dropdown
+    id: preprint
+    attributes:
+      label: Preprint
+      description: Choose Yes to list it under Preprints instead of a year.
+      options:
+        - "No"
+        - "Yes"
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link
+      description: Optional. The DOI or web link.
+      placeholder: https://doi.org/...
+    validations:
+      required: false
+  - type: textarea
+    id: pdf
+    attributes:
+      label: PDF
+      description: Optional. Drag a PDF here to attach it. It uploads automatically.
+    validations:
+      required: false
