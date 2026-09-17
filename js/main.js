@@ -316,7 +316,6 @@
     { page: 'Publications', url: 'publications.html', title: 'Schell, Liow & Carmody (2026)', text: 'Fasting and re-feeding independently alter mouse gut microbiota during intermittent fasting. bioRxiv preprint.' },
     { page: 'Publications', url: 'publications.html', title: 'Schell, Rubin, Chan & Carmody (2025)', text: 'Early-life microbiota disruption by antibiotics elicits fitness trade-offs that differ by sex. bioRxiv preprint.' },
     { page: 'Publications', url: 'publications.html', title: 'Liow et al. (2025)', text: 'Polyunsaturated fatty acids promote appetite via the microbiome-gut-brain axis. bioRxiv preprint.' },
-    { page: 'Publications', url: 'publications.html', title: 'Sarkar et al. (2026)', text: 'The island biology of the host microbiome. Trends in Microbiology.' },
     { page: 'Publications', url: 'publications.html', title: 'Liow, Sarkar & Carmody (2025)', text: 'Industrialized diets modulate host eating behavior via the microbiome-gut-brain axis. Trends in Endocrinology & Metabolism.' },
     { page: 'Publications', url: 'publications.html', title: 'Schell et al. (2025)', text: 'Dietary preservatives alter the gut microbiota in vitro and in vivo with sex-specific consequences for host metabolic development. American Journal of Clinical Nutrition.' },
     { page: 'Publications', url: 'publications.html', title: 'Schell & Carmody (2025)', text: 'An energetic framework for gut microbiome-mediated obesity induced by early-life exposure to antibiotics. Cell Host & Microbe.' },
